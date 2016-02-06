@@ -6,7 +6,7 @@
 /*   By: cledant <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/02 11:35:05 by cledant           #+#    #+#             */
-/*   Updated: 2016/02/04 19:18:21 by cledant          ###   ########.fr       */
+/*   Updated: 2016/02/06 19:59:37 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,14 +72,14 @@ int				ft_what_faces_ray_for_verti(double alpha);
 double			ft_angle_dec_to_rad(double dec);
 int				ft_position_to_real_unit(int pos);
 int				ft_check_wall(t_mlx *e, int r_x, int r_y);
-size_t			ft_horizontal_intersection(t_mlx *e, double alpha,
+double			ft_horizontal_intersection(t_mlx *e, double alpha,
 					int player_x, int player_y);
-size_t			ft_vertical_intersection(t_mlx *e, double alpha,
+double			ft_vertical_intersection(t_mlx *e, double alpha,
 					int player_x, int player_y);
-size_t			ft_ray_lenght(int begin, int end, double rad_alpha);
-size_t			ft_select_ray(t_mlx *e, double alpha, int player_x,
+double			ft_ray_lenght(int *begin, double *end, double rad_alpha, int alpha);
+double			ft_select_ray(t_mlx *e, double angle[2], int player_x,
 					int player_y);
-size_t			ft_wall_height(t_mlx *e, double alpha);
+size_t			ft_wall_height(t_mlx *e, double angle[2]);
 void			ft_draw_image(t_mlx *e);
 size_t			ft_round_double_to_size_t(double nb);
 

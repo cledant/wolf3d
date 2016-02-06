@@ -6,19 +6,19 @@
 /*   By: cledant <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/02 18:08:03 by cledant           #+#    #+#             */
-/*   Updated: 2016/02/06 20:04:23 by cledant          ###   ########.fr       */
+/*   Updated: 2016/02/06 17:43:09 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "wolf3d.h"
 
-double		ft_horizontal_intersection(t_mlx *e, double alpha, int player_x,
+size_t			ft_horizontal_intersection(t_mlx *e, double alpha, int player_x,
 											int player_y)
 {
 	int			player[2];
-	double		first_int[2];
-	double		x_inc;
-	double		y_inc;
+	int			first_int[2];
+	int			x_inc;
+	int			y_inc;
 	double		rad_alpha;
 
 	if (alpha >= 360)
@@ -34,39 +34,39 @@ double		ft_horizontal_intersection(t_mlx *e, double alpha, int player_x,
 		first_int[1] = (player[1] / C_SIZE * C_SIZE + C_SIZE);
 	first_int[0] = player[0] + (((player[1] -
 					first_int[1]) / tan(rad_alpha)));
-	if (alpha == 180)
+	if (alpha == 0)
 		first_int[0] = -first_int[0];
-//	ft_putnbrendl(first_int[0]);
-//	ft_putnbrendl(first_int[1]);
-//	ft_putnbrendl(first_int[0] / C_SIZE);
-//	ft_putnbrendl(first_int[1] / C_SIZE);
+	ft_putnbrendl(first_int[0]);
+	ft_putnbrendl(first_int[1]);
+	ft_putnbrendl(first_int[0] / C_SIZE);
+	ft_putnbrendl(first_int[1] / C_SIZE);
 	if (ft_what_faces_ray(alpha) == 1)
 		y_inc = -C_SIZE;
 	else
 		y_inc = C_SIZE;
-//	printf("Y_INC : %d\n", y_inc);
-	x_inc = fabs((C_SIZE / tan(rad_alpha)));
+	printf("Y_INC : %d\n", y_inc);
+	x_inc = ft_abs((C_SIZE / tan(rad_alpha)));
 	if (ft_what_faces_ray_for_verti(alpha) == -1)
 		x_inc = -x_inc;
-//	printf("X_INC : %d\n", x_inc);
+	printf("X_INC : %d\n", x_inc);
 	while (ft_check_wall(e, first_int[0], first_int[1]) == -1)
 	{
-//		ft_putendl("TRY");
-		first_int[0] += (x_inc );
-		first_int[1] += (y_inc );
-//		ft_putnbrendl(first_int[0]);
-//		ft_putnbrendl(first_int[1]);
-//		ft_putnbrendl(first_int[0] / C_SIZE);
-//		ft_putnbrendl(first_int[1] / C_SIZE);
+		ft_putendl("TRY");
+		first_int[0] += (x_inc / 2);
+		first_int[1] += (y_inc / 2);
+		ft_putnbrendl(first_int[0]);
+		ft_putnbrendl(first_int[1]);
+		ft_putnbrendl(first_int[0] / C_SIZE);
+		ft_putnbrendl(first_int[1] / C_SIZE);
 	}
 	if (first_int[0] > C_SIZE * (e->x_max - 1))
 		first_int[0] = C_SIZE * (e->x_max - 1);
 	if (first_int[0] < 0)
 		first_int[0] = 0;
-//	ft_putnbrendl(first_int[0]);
-//	ft_putnbrendl(first_int[1]);
-//	ft_putnbrendl(first_int[0] / C_SIZE);
-//	ft_putnbrendl(first_int[1] / C_SIZE);
-//	ft_putendl("FIN HORI");
+	ft_putnbrendl(first_int[0]);
+	ft_putnbrendl(first_int[1]);
+	ft_putnbrendl(first_int[0] / C_SIZE);
+	ft_putnbrendl(first_int[1] / C_SIZE);
+	ft_putendl("FIN HORI");
 	return (ft_ray_lenght(player, first_int, rad_alpha, alpha));
 }

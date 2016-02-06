@@ -1,0 +1,33 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_ray_lenght.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: cledant <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2016/02/03 09:33:22 by cledant           #+#    #+#             */
+/*   Updated: 2016/02/06 19:39:35 by cledant          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "wolf3d.h"
+
+double		ft_ray_lenght(double *begin, double *end, double rad_alpha, int alpha)
+{
+	double ret;
+
+	ret = (begin[0] - end[0]) * (begin[0] - end[0]) +
+			(begin[1] - end[1]) * (begin[1] - end[1]);
+	ret = sqrt(ret);
+//	printf("WTF 1 : %f\n", ret);
+//	printf("WTF 2 : %f\n", ret);
+//	printf("WTF 3 : %f\n", ret);
+//	ft_putendl("CHECK RAYLEN");
+//	ft_putnbrendl(begin);
+//	ft_putnbrendl(end);
+//	printf("%f\n", rad_alpha);
+//	printf("%f\n", cos(rad_alpha));
+//	ft_putendl("FIN CHECK RAYLEN");
+//	printf("AVANT ROUND : %f\n", ret);
+	return (ret);
+}

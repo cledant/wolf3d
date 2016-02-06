@@ -6,7 +6,7 @@
 /*   By: cledant <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/11 10:42:33 by cledant           #+#    #+#             */
-/*   Updated: 2016/02/04 20:00:38 by cledant          ###   ########.fr       */
+/*   Updated: 2016/02/06 20:05:45 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,10 +50,9 @@ static int		main_part1_5(t_mlx *e, t_list *lst)
 	ft_lstdel(&lst, &ft_bzero);
 	e->tab = tab;
 	e->render = 0;
-	e->alpha = 180;
-	e->dist_to_proj_plane = ft_calc_dist_to_proj_plane();
-	e->inc_alpha = ft_calc_inc_alpha();
-	ft_putendl("TEST 1.%");
+	e->alpha = 0;
+	e->dist_to_proj_plane = (WIN_X / 2) / tan(ft_angle_dec_to_rad(90 - FOV));
+	e->inc_alpha = FOV / ((double)WIN_X);
 	e->x_player = ft_seek_pos_x_player(e->tab, e->x_max, e->y_max);
 	e->y_player = ft_seek_pos_y_player(e->tab, e->x_max, e->y_max);
 	return (1);
@@ -80,11 +79,8 @@ static int		main_part2(t_mlx *e, int fd, t_list *lst)
 		ft_lstdel(&lst, &ft_bzero);
 		return (0);
 	}
-	ft_putnbrendl(e->y_max);
-	ft_putnbrendl(e->x_max);
 	if (main_part1_5(e, lst) == 0)
 		return (0);
-	ft_putendl("OK 1.5");
 	return (1);
 }
 
@@ -109,10 +105,8 @@ int				main(void)
 	}
 	if (main_part1(&e) == 0)
 		return (0);
-	ft_putendl("OK 1");
 	if ((main_part2(&e, fd, lst)) == 0)
 		return (0);
-	ft_putendl("OK 2");
 	if (close(fd) == -1)
 	{
 		ft_free_all(&e);

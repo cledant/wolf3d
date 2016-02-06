@@ -6,7 +6,7 @@
 /*   By: cledant <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/03 09:56:45 by cledant           #+#    #+#             */
-/*   Updated: 2016/02/04 12:26:00 by cledant          ###   ########.fr       */
+/*   Updated: 2016/02/06 20:07:31 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,18 +19,22 @@ void	ft_draw_image(t_mlx *e)
 	int		end[2];
 	size_t	w_height;
 	size_t	offset;
-	double	alpha;
+	double	angle[2];
 
 	i = 0;
-	alpha = e->alpha + 30;
+	angle[0] = e->alpha + 30;
+	angle[1] = FOV / 2;
 	while (i < WIN_X)
 	{
 		if (i != 0)
-			alpha -= e->inc_alpha;
-		ft_putendl("COLUMN");
-		ft_putnbrendl(i);
-		printf("ALPHA = : %f\n", alpha);
-		w_height = ft_wall_height(e, alpha);
+		{
+			angle[0] -= e->inc_alpha;
+			angle[1] -= e->inc_alpha;
+		}
+//		ft_putendl("COLUMN");
+//		ft_putnbrendl(i);
+//		printf("ALPHA = : %f\n", angle[0]);
+		w_height = ft_wall_height(e, angle);
 		offset = (WIN_Y - w_height) / 2;
 //		ft_putendl("W_HEIGHT :");
 //		ft_putnbrendl(w_height);
