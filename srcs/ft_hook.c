@@ -6,7 +6,7 @@
 /*   By: cledant <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/11 11:27:39 by cledant           #+#    #+#             */
-/*   Updated: 2016/02/07 13:06:19 by cledant          ###   ########.fr       */
+/*   Updated: 2016/02/07 17:27:12 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,9 @@ int		mouse_hook(int button, int x, int y, t_mlx *e)
 
 int		key_hook(int keycode, t_mlx *e)
 {
+	double	tmp_sin;
+	double	tmp_cos;
+
 	if (keycode == MLX_KEY_ESC)
 	{
 		ft_memdel((void **)e->tab);
@@ -66,19 +69,25 @@ int		key_hook(int keycode, t_mlx *e)
 	}
 	if (keycode == MLX_KEY_UP)
 	{
-		e->x_player = e->x_player + cos(e->rad_alpha) * e->speed;
-		e->y_player = e->y_player - sin(e->rad_alpha) * e->speed;
-		ft_mlx_i_clear_img(e->img, WIN_X, WIN_Y);
-		e->render = 0;
-		expose_hook(e);
+		if (ft_check_collision(e, e->alpha) == 0)
+		{
+			e->x_player = e->x_player + cos(e->rad_alpha) * e->speed;
+			e->y_player = e->y_player - sin(e->rad_alpha) * e->speed;
+			ft_mlx_i_clear_img(e->img, WIN_X, WIN_Y);
+			e->render = 0;
+			expose_hook(e);
+		}
 	}
 	if (keycode == MLX_KEY_DOWN)
 	{
-		e->x_player = e->x_player - cos(e->rad_alpha) * e->speed;
-		e->y_player = e->y_player + sin(e->rad_alpha) * e->speed;
-		ft_mlx_i_clear_img(e->img, WIN_X, WIN_Y);
-		e->render = 0;
-		expose_hook(e);
+		if (ft_check_collision(e, e->alpha + 180) == 0)
+		{
+			e->x_player = e->x_player - cos(e->rad_alpha) * e->speed;
+			e->y_player = e->y_player + sin(e->rad_alpha) * e->speed;
+			ft_mlx_i_clear_img(e->img, WIN_X, WIN_Y);
+			e->render = 0;
+			expose_hook(e);
+		}
 	}
 	return (0);
 }

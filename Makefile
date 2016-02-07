@@ -6,7 +6,7 @@
 #    By: cledant <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/11/26 10:40:13 by cledant           #+#    #+#              #
-#    Updated: 2016/02/07 11:07:24 by cledant          ###   ########.fr        #
+#    Updated: 2016/02/07 16:37:53 by cledant          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,7 +30,7 @@ SRC_NAME = main.c ft_hook.c ft_mlx_i_pixel_put.c ft_mlx_i_position_in_2d.c \
 		   ft_what_faces_ray.c ft_angle_dec_to_rad.c \
 		   ft_check_wall.c ft_horizontal_intersection.c ft_vertical_intersection.c \
 		   ft_ray_lenght.c ft_draw_image.c ft_select_ray.c \
-		   ft_wall_height.c \
+		   ft_wall_height.c ft_check_collision.c \
 		   ft_mlx_i_draw_verti_line.c ft_mlx_i_drawline.c \
 		   ft_mlx_i_draw_hori_line.c ft_mlx_i_draw_diag_line1234.c \
 		   ft_mlx_i_draw_diag_line5678.c ft_seek_pos_x_player.c \

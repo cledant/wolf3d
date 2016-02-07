@@ -6,7 +6,7 @@
 /*   By: cledant <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/02 11:35:05 by cledant           #+#    #+#             */
-/*   Updated: 2016/02/07 13:01:15 by cledant          ###   ########.fr       */
+/*   Updated: 2016/02/07 17:18:53 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ int				expose_hook(t_mlx *e);
 int				key_hook(int keycode, t_mlx *e);
 int				mouse_hook(int button, int x, int y, t_mlx *e);
 size_t			ft_lstseek_max_x(t_list *list);
-void			ft_putendl_int2(int **tab, int x, int y);
+void			ft_putendl_int2(int **tab, int x, int y); //delete a la fin
 int				**ft_fill_int_tab2(t_list *list, int x, int y);
 int				ft_lstsplit_whitespaces_content(t_list *list);
 int				ft_seek_pos_x_player(int **tab, int x, int y);
@@ -83,5 +83,6 @@ double			ft_select_ray(t_mlx *e, double angle[2], int player_x,
 					int player_y);
 size_t			ft_wall_height(t_mlx *e, double angle[2]);
 void			ft_draw_image(t_mlx *e);
+int				ft_check_collision(t_mlx *e, double angle);
 
 #endif
