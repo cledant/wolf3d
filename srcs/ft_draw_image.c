@@ -6,7 +6,7 @@
 /*   By: cledant <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/03 09:56:45 by cledant           #+#    #+#             */
-/*   Updated: 2016/02/07 16:45:12 by cledant          ###   ########.fr       */
+/*   Updated: 2016/02/07 22:52:10 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	ft_draw_image(t_mlx *e)
 	int		begin[2];
 	int		end[2];
 	size_t	w_height;
-	size_t	offset;
+	int		offset;
 	double	angle[2];
 
 	i = 0;
@@ -36,6 +36,10 @@ void	ft_draw_image(t_mlx *e)
 //		printf("ALPHA = : %f\n", angle[0]);
 		w_height = ft_wall_height(e, angle);
 		offset = (WIN_Y - w_height) / 2;
+		if (offset < 0)
+			offset = 0;
+		if (w_height > WIN_Y)
+			w_height = WIN_Y;
 //		ft_putendl("W_HEIGHT :");
 //		ft_putnbrendl(w_height);
 //		ft_putendl("OFFSET :");

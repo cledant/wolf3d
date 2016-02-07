@@ -6,13 +6,14 @@
 /*   By: cledant <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/02 11:35:05 by cledant           #+#    #+#             */
-/*   Updated: 2016/02/07 17:18:53 by cledant          ###   ########.fr       */
+/*   Updated: 2016/02/07 21:45:05 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef WOLF3D_H
 # define WOLF3D_H
 
+# include <stdio.h> //caca
 # include <fcntl.h>
 # include <mlx.h>
 # include <math.h>
