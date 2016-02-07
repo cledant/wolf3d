@@ -6,7 +6,7 @@
 /*   By: cledant <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/11 11:27:39 by cledant           #+#    #+#             */
-/*   Updated: 2016/02/07 17:27:12 by cledant          ###   ########.fr       */
+/*   Updated: 2016/02/07 19:54:30 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ int		key_hook(int keycode, t_mlx *e)
 	}
 	if (keycode == MLX_KEY_UP)
 	{
-		if (ft_check_collision(e, e->alpha) == 0)
+		if (ft_check_collision(e, e->alpha) == 1)
 		{
 			e->x_player = e->x_player + cos(e->rad_alpha) * e->speed;
 			e->y_player = e->y_player - sin(e->rad_alpha) * e->speed;
@@ -80,7 +80,7 @@ int		key_hook(int keycode, t_mlx *e)
 	}
 	if (keycode == MLX_KEY_DOWN)
 	{
-		if (ft_check_collision(e, e->alpha + 180) == 0)
+		if (ft_check_collision(e, e->alpha + 180) == 1)
 		{
 			e->x_player = e->x_player - cos(e->rad_alpha) * e->speed;
 			e->y_player = e->y_player + sin(e->rad_alpha) * e->speed;
