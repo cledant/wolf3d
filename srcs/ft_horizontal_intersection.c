@@ -6,7 +6,7 @@
 /*   By: cledant <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/02 18:08:03 by cledant           #+#    #+#             */
-/*   Updated: 2016/02/06 20:04:23 by cledant          ###   ########.fr       */
+/*   Updated: 2016/02/07 13:00:24 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,8 @@ double		ft_horizontal_intersection(t_mlx *e, double alpha, int player_x,
 	if (alpha <= -360)
 		alpha = alpha + 360;
 	rad_alpha = ft_angle_dec_to_rad(alpha);
-	player[0] = 32 + 64 * player_x;
-	player[1] = 32 + 64 * player_y;
+	player[0] = player_x;
+	player[1] = player_y;
 	if (ft_what_faces_ray(alpha) == 1)
 		first_int[1] = (player[1] / C_SIZE * C_SIZE - 1);
 	else

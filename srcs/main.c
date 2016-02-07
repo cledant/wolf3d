@@ -6,7 +6,7 @@
 /*   By: cledant <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/11 10:42:33 by cledant           #+#    #+#             */
-/*   Updated: 2016/02/06 20:05:45 by cledant          ###   ########.fr       */
+/*   Updated: 2016/02/07 12:50:55 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,10 +51,14 @@ static int		main_part1_5(t_mlx *e, t_list *lst)
 	e->tab = tab;
 	e->render = 0;
 	e->alpha = 0;
+	e->rad_alpha = 0;
 	e->dist_to_proj_plane = (WIN_X / 2) / tan(ft_angle_dec_to_rad(90 - FOV));
 	e->inc_alpha = FOV / ((double)WIN_X);
-	e->x_player = ft_seek_pos_x_player(e->tab, e->x_max, e->y_max);
-	e->y_player = ft_seek_pos_y_player(e->tab, e->x_max, e->y_max);
+	e->x_player = ft_seek_pos_x_player(e->tab, e->x_max, e->y_max) * C_SIZE +
+		(C_SIZE / 2);
+	e->y_player = ft_seek_pos_y_player(e->tab, e->x_max, e->y_max) * C_SIZE +
+		(C_SIZE / 2);
+	e->speed = 10;
 	return (1);
 }
 
@@ -113,7 +117,7 @@ int				main(void)
 		return (0);
 	}
 	ft_putendl_int2(e.tab, e.x_max, e.y_max);
-	mlx_key_hook(e.win, key_hook, &e);
+	mlx_hook(e.win, KEY_PRESS, KEY_PRESS_MASK, key_hook, &e);
 	mlx_mouse_hook(e.win, mouse_hook, &e);
 	mlx_expose_hook(e.win, expose_hook, &e);
 	mlx_loop(e.mlx);
