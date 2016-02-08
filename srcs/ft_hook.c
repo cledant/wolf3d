@@ -6,7 +6,7 @@
 /*   By: cledant <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/11 11:27:39 by cledant           #+#    #+#             */
-/*   Updated: 2016/02/08 10:45:00 by cledant          ###   ########.fr       */
+/*   Updated: 2016/02/08 21:33:47 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,19 @@
 
 int		expose_hook(t_mlx *e)
 {
-	if (e->render != 1)
-	{
+//	if (e->render != 1)
+//	{	
 		ft_draw_image(e);
 		mlx_put_image_to_window(e->mlx, e->win, e->img, 0, 0);
 		e->render = 1;
-	}
+//	}
+	return (0);
+}
+
+int		loop_hook(t_mlx *e)
+{
+	ft_mlx_i_clear_img(e->img, WIN_X, WIN_Y);
+	expose_hook(e);
 	return (0);
 }
 
@@ -30,6 +37,28 @@ int		mouse_hook(int button, int x, int y, t_mlx *e)
 		ft_putnbrendl(x);
 		ft_putnbrendl(y);
 	}
+	return (0);
+}
+
+int		mouse_motion(int x, int y, t_mlx *e)
+{
+	int 	delta_x;
+
+	if (x > WIN_X)
+		x = WIN_X;
+	else if (x < 0)
+		x= 0;
+	delta_x = -x + e->x_mouse_old;
+	e->alpha += (delta_x / 2);
+	if (e->alpha >= 360)
+		e->alpha -= 360;
+	else if (e->alpha <= -360)
+		e->alpha += 360;
+	e->rad_alpha = ft_angle_dec_to_rad(e->alpha);
+	e->x_mouse_old = x;
+//	ft_mlx_i_clear_img(e->img, WIN_X, WIN_Y);
+//	e->render = 0;
+//	expose_hook(e);
 	return (0);
 }
 
@@ -49,23 +78,25 @@ int		key_hook(int keycode, t_mlx *e)
 	}
 	if (keycode == MLX_KEY_RIGHT)
 	{
-		e->alpha = e->alpha - ROT_SPEED;
-		if (e->alpha == -360)
-			e->alpha = 0;
-		e->rad_alpha = ft_angle_dec_to_rad(e->alpha);
-		ft_mlx_i_clear_img(e->img, WIN_X, WIN_Y);
-		e->render = 0;
-		expose_hook(e);
+		if (ft_check_collision(e, e->alpha - 90, 15) == 1)
+		{
+			e->x_player = e->x_player + sin(e->rad_alpha) * e->speed;
+			e->y_player = e->y_player + cos(e->rad_alpha) * e->speed;
+		}
+//		ft_mlx_i_clear_img(e->img, WIN_X, WIN_Y);
+//		e->render = 0;
+//		expose_hook(e);
 	}
 	if (keycode == MLX_KEY_LEFT)
 	{
-		e->alpha = e->alpha + ROT_SPEED;
-		if (e->alpha == 360)
-			e->alpha = 0;
-		e->rad_alpha = ft_angle_dec_to_rad(e->alpha);
-		ft_mlx_i_clear_img(e->img, WIN_X, WIN_Y);
-		e->render = 0;
-		expose_hook(e);
+		if (ft_check_collision(e, e->alpha + 90, 15) == 1)
+		{
+			e->x_player = e->x_player - sin(e->rad_alpha) * e->speed;
+			e->y_player = e->y_player - cos(e->rad_alpha) * e->speed;
+		}
+//		ft_mlx_i_clear_img(e->img, WIN_X, WIN_Y);
+//		e->render = 0;
+//		expose_hook(e);
 	}
 	if (keycode == MLX_KEY_UP)
 	{
@@ -73,9 +104,9 @@ int		key_hook(int keycode, t_mlx *e)
 		{
 			e->x_player = e->x_player + cos(e->rad_alpha) * e->speed;
 			e->y_player = e->y_player - sin(e->rad_alpha) * e->speed;
-			ft_mlx_i_clear_img(e->img, WIN_X, WIN_Y);
-			e->render = 0;
-			expose_hook(e);
+//			ft_mlx_i_clear_img(e->img, WIN_X, WIN_Y);
+//			e->render = 0;
+//			expose_hook(e);
 		}
 	}
 	if (keycode == MLX_KEY_DOWN)
@@ -84,9 +115,9 @@ int		key_hook(int keycode, t_mlx *e)
 		{
 			e->x_player = e->x_player - cos(e->rad_alpha) * e->speed;
 			e->y_player = e->y_player + sin(e->rad_alpha) * e->speed;
-			ft_mlx_i_clear_img(e->img, WIN_X, WIN_Y);
-			e->render = 0;
-			expose_hook(e);
+//			ft_mlx_i_clear_img(e->img, WIN_X, WIN_Y);
+//			e->render = 0;
+//			expose_hook(e);
 		}
 	}
 	return (0);

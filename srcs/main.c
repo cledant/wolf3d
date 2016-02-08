@@ -6,7 +6,7 @@
 /*   By: cledant <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/11 10:42:33 by cledant           #+#    #+#             */
-/*   Updated: 2016/02/08 09:42:41 by cledant          ###   ########.fr       */
+/*   Updated: 2016/02/08 20:42:59 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,7 @@ static int		main_part1_5(t_mlx *e, t_list *lst)
 	e->y_player = ft_seek_pos_y_player(e->tab, e->x_max, e->y_max) * C_SIZE +
 		(C_SIZE / 2);
 	e->speed = SPEED;
+	e->x_mouse_old = WIN_X / 2;
 	return (1);
 }
 
@@ -118,8 +119,11 @@ int				main(void)
 	}
 	ft_putendl_int2(e.tab, e.x_max, e.y_max); //delete apres check
 	mlx_hook(e.win, KEY_PRESS, KEY_PRESS_MASK, key_hook, &e);
+	mlx_hook(e.win, MOTION_NOTIFY, POINTER_MOTION_MASK, mouse_motion, &e);
+//	mlx_hook(e.win, EXPOSE, EXPOSURE_MASK, expose_hook, &e);
 	mlx_mouse_hook(e.win, mouse_hook, &e);
-	mlx_expose_hook(e.win, expose_hook, &e);
+//	mlx_expose_hook(e.win, expose_hook, &e);
+	mlx_loop_hook(e.mlx, expose_hook, &e);
 	mlx_loop(e.mlx);
 	return (0);
 }
