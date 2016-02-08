@@ -6,7 +6,7 @@
 /*   By: cledant <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/11 10:42:33 by cledant           #+#    #+#             */
-/*   Updated: 2016/02/07 13:39:28 by cledant          ###   ########.fr       */
+/*   Updated: 2016/02/08 09:42:41 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ static int		main_part1_5(t_mlx *e, t_list *lst)
 		(C_SIZE / 2);
 	e->y_player = ft_seek_pos_y_player(e->tab, e->x_max, e->y_max) * C_SIZE +
 		(C_SIZE / 2);
-	e->speed = 10;
+	e->speed = SPEED;
 	return (1);
 }
 

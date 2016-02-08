@@ -6,7 +6,7 @@
 /*   By: cledant <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/03 09:56:45 by cledant           #+#    #+#             */
-/*   Updated: 2016/02/07 22:52:10 by cledant          ###   ########.fr       */
+/*   Updated: 2016/02/08 10:58:58 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	ft_draw_image(t_mlx *e)
 		}
 //		ft_putendl("COLUMN");
 //		ft_putnbrendl(i);
-//		printf("ALPHA = : %f\n", angle[0]);
+		printf("ALPHA = : %f\n", angle[0]);
 		w_height = ft_wall_height(e, angle);
 		offset = (WIN_Y - w_height) / 2;
 		if (offset < 0)
@@ -45,16 +45,25 @@ void	ft_draw_image(t_mlx *e)
 //		ft_putendl("OFFSET :");
 //		ft_putnbrendl(offset);
 		begin[0] = (int)i;
-		begin[1] = 0;
 		end[0] = (int)i;
-		end[1] = (int)(offset - 1);
-		ft_mlx_i_drawline(e->img, begin, end, 0x000000FF);
-		begin[1] = (int)offset;
-		end[1] = (int)(offset + w_height - 1);
-		ft_mlx_i_drawline(e->img, begin, end, 0x00CD4F39);
-		begin[1] = (int)(offset + w_height);
-		end[1] = WIN_Y - 1;
-		ft_mlx_i_drawline(e->img, begin, end, 0x0000FF00);
+		if (offset > 0)
+		{
+			begin[1] = 0;
+			end[1] = (int)(offset - 1);
+			ft_mlx_i_drawline(e->img, begin, end, 0x000000FF);
+			begin[1] = (int)offset;
+			end[1] = (int)(offset + w_height - 1);
+			ft_mlx_i_drawline(e->img, begin, end, 0x00CD4F39);
+			begin[1] = (int)(offset + w_height);
+			end[1] = WIN_Y - 1;
+			ft_mlx_i_drawline(e->img, begin, end, 0x0000FF00);
+		}
+		else
+		{
+			begin[1] = (int)offset;
+			end[1] = (int)(w_height);
+			ft_mlx_i_drawline(e->img, begin, end, 0x00CD4F39);
+		}
 		i++;
 	}
 }

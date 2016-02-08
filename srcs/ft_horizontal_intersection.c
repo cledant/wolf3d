@@ -6,7 +6,7 @@
 /*   By: cledant <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/02 18:08:03 by cledant           #+#    #+#             */
-/*   Updated: 2016/02/07 13:00:24 by cledant          ###   ########.fr       */
+/*   Updated: 2016/02/08 11:09:44 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ double		ft_horizontal_intersection(t_mlx *e, double alpha, int player_x,
 		first_int[1] = (player[1] / C_SIZE * C_SIZE + C_SIZE);
 	first_int[0] = player[0] + (((player[1] -
 					first_int[1]) / tan(rad_alpha)));
-	if (alpha == 180)
+	if (alpha == 180 || alpha == -180)
 		first_int[0] = -first_int[0];
 //	ft_putnbrendl(first_int[0]);
 //	ft_putnbrendl(first_int[1]);

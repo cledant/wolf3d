@@ -6,7 +6,7 @@
 /*   By: cledant <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/02 11:35:05 by cledant           #+#    #+#             */
-/*   Updated: 2016/02/07 21:45:05 by cledant          ###   ########.fr       */
+/*   Updated: 2016/02/08 09:54:27 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@
 # define WIN_Y 720
 # define C_SIZE 64
 # define FOV 60
+# define ROT_SPEED 2
+# define SPEED 10
 # define KEY_PRESS_MASK (1L<<0)
 # define KEY_PRESS 2
 
@@ -84,6 +86,6 @@ double			ft_select_ray(t_mlx *e, double angle[2], int player_x,
 					int player_y);
 size_t			ft_wall_height(t_mlx *e, double angle[2]);
 void			ft_draw_image(t_mlx *e);
-int				ft_check_collision(t_mlx *e, double angle);
+int				ft_check_collision(t_mlx *e, double angle, size_t d_collision);
 
 #endif
