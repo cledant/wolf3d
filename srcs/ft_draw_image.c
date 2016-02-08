@@ -6,7 +6,7 @@
 /*   By: cledant <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/03 09:56:45 by cledant           #+#    #+#             */
-/*   Updated: 2016/02/08 10:58:58 by cledant          ###   ########.fr       */
+/*   Updated: 2016/02/08 14:31:53 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	ft_draw_image(t_mlx *e)
 		}
 //		ft_putendl("COLUMN");
 //		ft_putnbrendl(i);
-		printf("ALPHA = : %f\n", angle[0]);
+//		printf("ALPHA = : %f\n", angle[0]);
 		w_height = ft_wall_height(e, angle);
 		offset = (WIN_Y - w_height) / 2;
 		if (offset < 0)
