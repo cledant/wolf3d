@@ -6,7 +6,7 @@
 /*   By: cledant <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/02 11:35:05 by cledant           #+#    #+#             */
-/*   Updated: 2016/02/08 20:42:16 by cledant          ###   ########.fr       */
+/*   Updated: 2016/02/09 10:48:41 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,14 +84,11 @@ int				ft_what_faces_ray(double alpha);
 int				ft_what_faces_ray_for_verti(double alpha);
 double			ft_angle_dec_to_rad(double dec);
 int				ft_check_wall(t_mlx *e, int r_x, int r_y);
-double			ft_horizontal_intersection(t_mlx *e, double alpha,
-					int player_x, int player_y);
-double			ft_vertical_intersection(t_mlx *e, double alpha,
-					int player_x, int player_y);
+double			ft_horizontal_intersection(t_mlx *e, double alpha, int *wall_type);
+double			ft_vertical_intersection(t_mlx *e, double alpha, int *wall_type);
 double			ft_ray_lenght(int *begin, double *end, double rad_alpha, int alpha);
-double			ft_select_ray(t_mlx *e, double angle[2], int player_x,
-					int player_y);
-size_t			ft_wall_height(t_mlx *e, double angle[2]);
+double			ft_select_ray(t_mlx *e, double angle[2], int *wall_type);
+size_t			ft_wall_height(t_mlx *e, double angle[2], int *wall_type);
 void			ft_draw_image(t_mlx *e);
 int				ft_check_collision(t_mlx *e, double angle, size_t d_collision);
 

@@ -6,7 +6,7 @@
 /*   By: cledant <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/02 16:27:28 by cledant           #+#    #+#             */
-/*   Updated: 2016/02/04 15:01:48 by cledant          ###   ########.fr       */
+/*   Updated: 2016/02/09 11:05:58 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int		ft_seek_pos_y_player(int **tab, int x, int y)
 	{
 		while (i < x)
 		{
-			if (tab[j][i] == 2)
+			if (tab[j][i] == 1)
 				return (j);
 			i++;
 		}

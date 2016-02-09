@@ -6,7 +6,7 @@
 /*   By: cledant <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/03 09:56:45 by cledant           #+#    #+#             */
-/*   Updated: 2016/02/08 14:31:53 by cledant          ###   ########.fr       */
+/*   Updated: 2016/02/09 11:48:26 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,11 @@ void	ft_draw_image(t_mlx *e)
 	size_t	w_height;
 	int		offset;
 	double	angle[2];
+	int		color;
+	int 	wall_type;
 
+	color = 0;
+	wall_type = 0;
 	i = 0;
 	angle[0] = e->alpha + 30;
 	angle[1] = FOV / 2;
@@ -34,12 +38,18 @@ void	ft_draw_image(t_mlx *e)
 //		ft_putendl("COLUMN");
 //		ft_putnbrendl(i);
 //		printf("ALPHA = : %f\n", angle[0]);
-		w_height = ft_wall_height(e, angle);
+		w_height = ft_wall_height(e, angle, &wall_type);
 		offset = (WIN_Y - w_height) / 2;
 		if (offset < 0)
 			offset = 0;
 		if (w_height > WIN_Y)
 			w_height = WIN_Y;
+		if (wall_type == 2)
+			color = 0x00CD4F39;
+		else if (wall_type == 3)
+			color = 0x00283349;
+		else
+			color = 0x00500805;
 //		ft_putendl("W_HEIGHT :");
 //		ft_putnbrendl(w_height);
 //		ft_putendl("OFFSET :");
@@ -53,7 +63,7 @@ void	ft_draw_image(t_mlx *e)
 			ft_mlx_i_drawline(e->img, begin, end, 0x000000FF);
 			begin[1] = (int)offset;
 			end[1] = (int)(offset + w_height - 1);
-			ft_mlx_i_drawline(e->img, begin, end, 0x00CD4F39);
+			ft_mlx_i_drawline(e->img, begin, end, color);
 			begin[1] = (int)(offset + w_height);
 			end[1] = WIN_Y - 1;
 			ft_mlx_i_drawline(e->img, begin, end, 0x0000FF00);
@@ -62,7 +72,7 @@ void	ft_draw_image(t_mlx *e)
 		{
 			begin[1] = (int)offset;
 			end[1] = (int)(w_height);
-			ft_mlx_i_drawline(e->img, begin, end, 0x00CD4F39);
+			ft_mlx_i_drawline(e->img, begin, end, color);
 		}
 		i++;
 	}

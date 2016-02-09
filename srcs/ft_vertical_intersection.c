@@ -6,14 +6,13 @@
 /*   By: cledant <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/04 16:41:57 by cledant           #+#    #+#             */
-/*   Updated: 2016/02/08 14:30:18 by cledant          ###   ########.fr       */
+/*   Updated: 2016/02/09 11:32:11 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "wolf3d.h"
 
-double			ft_vertical_intersection(t_mlx *e, double alpha, int player_x,
-											int player_y)
+double			ft_vertical_intersection(t_mlx *e, double alpha, int *wall_type)
 {
 	int			player[2];
 	double		first_int[2];
@@ -26,8 +25,8 @@ double			ft_vertical_intersection(t_mlx *e, double alpha, int player_x,
 	if (alpha <= -360)
 		alpha = alpha + 360;
 	rad_alpha = ft_angle_dec_to_rad(alpha);
-	player[0] = player_x;
-	player[1] = player_y;
+	player[0] = e->x_player;
+	player[1] = e->y_player;
 	if (ft_what_faces_ray_for_verti(alpha) == 1)
 		first_int[0] = (((player[0] / C_SIZE) * C_SIZE) + C_SIZE);
 	else
@@ -63,6 +62,7 @@ double			ft_vertical_intersection(t_mlx *e, double alpha, int player_x,
 		first_int[1] = 0;
 	if (first_int[1] > C_SIZE * (e->y_max - 1))
 		first_int[1] =  C_SIZE * (e->y_max - 1);
+	*wall_type = e->tab[(int)first_int[1] / 64][(int)first_int[0] / 64];
 //	ft_putnbrendl(first_int[0]);
 //	ft_putnbrendl(first_int[1]);
 //	ft_putnbrendl(first_int[0] / C_SIZE);

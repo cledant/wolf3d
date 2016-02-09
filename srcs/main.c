@@ -6,7 +6,7 @@
 /*   By: cledant <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/11 10:42:33 by cledant           #+#    #+#             */
-/*   Updated: 2016/02/08 20:42:59 by cledant          ###   ########.fr       */
+/*   Updated: 2016/02/09 10:35:49 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,9 +120,7 @@ int				main(void)
 	ft_putendl_int2(e.tab, e.x_max, e.y_max); //delete apres check
 	mlx_hook(e.win, KEY_PRESS, KEY_PRESS_MASK, key_hook, &e);
 	mlx_hook(e.win, MOTION_NOTIFY, POINTER_MOTION_MASK, mouse_motion, &e);
-//	mlx_hook(e.win, EXPOSE, EXPOSURE_MASK, expose_hook, &e);
 	mlx_mouse_hook(e.win, mouse_hook, &e);
-//	mlx_expose_hook(e.win, expose_hook, &e);
 	mlx_loop_hook(e.mlx, expose_hook, &e);
 	mlx_loop(e.mlx);
 	return (0);

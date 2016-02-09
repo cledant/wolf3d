@@ -6,7 +6,7 @@
 /*   By: cledant <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/11 11:27:39 by cledant           #+#    #+#             */
-/*   Updated: 2016/02/08 21:33:47 by cledant          ###   ########.fr       */
+/*   Updated: 2016/02/09 11:21:23 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,17 +44,16 @@ int		mouse_motion(int x, int y, t_mlx *e)
 {
 	int 	delta_x;
 
-	if (x > WIN_X)
-		x = WIN_X;
-	else if (x < 0)
-		x= 0;
-	delta_x = -x + e->x_mouse_old;
-	e->alpha += (delta_x / 2);
-	if (e->alpha >= 360)
-		e->alpha -= 360;
-	else if (e->alpha <= -360)
-		e->alpha += 360;
-	e->rad_alpha = ft_angle_dec_to_rad(e->alpha);
+	if ((x >= 0 && x <= WIN_X) && (y >=0 && y <= WIN_Y))
+	{
+		delta_x = -x + e->x_mouse_old;
+		e->alpha += (delta_x / 2);
+		if (e->alpha >= 360)
+			e->alpha -= 360;
+		else if (e->alpha <= -360)
+			e->alpha += 360;
+		e->rad_alpha = ft_angle_dec_to_rad(e->alpha);
+	}
 	e->x_mouse_old = x;
 //	ft_mlx_i_clear_img(e->img, WIN_X, WIN_Y);
 //	e->render = 0;
