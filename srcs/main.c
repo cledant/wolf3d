@@ -6,7 +6,7 @@
 /*   By: cledant <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/11 10:42:33 by cledant           #+#    #+#             */
-/*   Updated: 2016/02/09 10:35:49 by cledant          ###   ########.fr       */
+/*   Updated: 2016/02/09 20:22:33 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,11 +105,17 @@ int				main(void)
 	lst = NULL;
 	if ((fd = open("maps/wolf.map", O_RDONLY)) < 0)
 	{
-		ft_putendl("Error");
+		ft_putendl("Error loading map");
 		return (0);
 	}
 	if (main_part1(&e) == 0)
 		return (0);
+	if (ft_load_texture(&e) == 0)
+	{
+		ft_clear_texture(&e);
+		ft_putendl("Error loading texture");
+		return (0);
+	}
 	if ((main_part2(&e, fd, lst)) == 0)
 		return (0);
 	if (close(fd) == -1)

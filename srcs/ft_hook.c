@@ -6,7 +6,7 @@
 /*   By: cledant <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/11 11:27:39 by cledant           #+#    #+#             */
-/*   Updated: 2016/02/09 11:21:23 by cledant          ###   ########.fr       */
+/*   Updated: 2016/02/09 19:33:45 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,7 @@ int		key_hook(int keycode, t_mlx *e)
 	if (keycode == MLX_KEY_ESC)
 	{
 		ft_memdel((void **)e->tab);
+		ft_clear_texture(e);
 		mlx_destroy_image(e->mlx, e->img);
 		mlx_clear_window(e->mlx, e->win);
 		mlx_destroy_window(e->mlx, e->win);

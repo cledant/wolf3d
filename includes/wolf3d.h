@@ -6,7 +6,7 @@
 /*   By: cledant <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/02 11:35:05 by cledant           #+#    #+#             */
-/*   Updated: 2016/02/09 10:48:41 by cledant          ###   ########.fr       */
+/*   Updated: 2016/02/09 19:21:30 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,6 @@
 # define KEY_PRESS 2
 # define MOTION_NOTIFY 6
 # define POINTER_MOTION_MASK (1L<<6)
-# define EXPOSURE_MASK (1L<<15)
-# define EXPOSE 12
 
 typedef struct	s_mlx
 {
@@ -53,6 +51,9 @@ typedef struct	s_mlx
 	size_t	dist_to_proj_plane;
 	double	inc_alpha;
 	int		x_mouse_old;
+	void	*img_bluestone;
+	void	*img_redbrick;
+	void	*img_wood;
 }				t_mlx;
 
 char			*ft_mlx_i_position_in_2d(void *img, int i, int j);
@@ -91,5 +92,7 @@ double			ft_select_ray(t_mlx *e, double angle[2], int *wall_type);
 size_t			ft_wall_height(t_mlx *e, double angle[2], int *wall_type);
 void			ft_draw_image(t_mlx *e);
 int				ft_check_collision(t_mlx *e, double angle, size_t d_collision);
+int				ft_load_texture(t_mlx *e);
+void			ft_clear_texture(t_mlx *e);
 
 #endif
