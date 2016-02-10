@@ -6,7 +6,7 @@
 /*   By: cledant <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/11 11:27:39 by cledant           #+#    #+#             */
-/*   Updated: 2016/02/09 19:33:45 by cledant          ###   ########.fr       */
+/*   Updated: 2016/02/10 15:08:37 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,8 @@
 
 int		expose_hook(t_mlx *e)
 {
-//	if (e->render != 1)
-//	{	
-		ft_draw_image(e);
-		mlx_put_image_to_window(e->mlx, e->win, e->img, 0, 0);
-		e->render = 1;
-//	}
+	ft_draw_image(e);
+	mlx_put_image_to_window(e->mlx, e->win, e->img, 0, 0);
 	return (0);
 }
 
@@ -55,9 +51,6 @@ int		mouse_motion(int x, int y, t_mlx *e)
 		e->rad_alpha = ft_angle_dec_to_rad(e->alpha);
 	}
 	e->x_mouse_old = x;
-//	ft_mlx_i_clear_img(e->img, WIN_X, WIN_Y);
-//	e->render = 0;
-//	expose_hook(e);
 	return (0);
 }
 
@@ -83,9 +76,6 @@ int		key_hook(int keycode, t_mlx *e)
 			e->x_player = e->x_player + sin(e->rad_alpha) * e->speed;
 			e->y_player = e->y_player + cos(e->rad_alpha) * e->speed;
 		}
-//		ft_mlx_i_clear_img(e->img, WIN_X, WIN_Y);
-//		e->render = 0;
-//		expose_hook(e);
 	}
 	if (keycode == MLX_KEY_LEFT)
 	{
@@ -94,9 +84,6 @@ int		key_hook(int keycode, t_mlx *e)
 			e->x_player = e->x_player - sin(e->rad_alpha) * e->speed;
 			e->y_player = e->y_player - cos(e->rad_alpha) * e->speed;
 		}
-//		ft_mlx_i_clear_img(e->img, WIN_X, WIN_Y);
-//		e->render = 0;
-//		expose_hook(e);
 	}
 	if (keycode == MLX_KEY_UP)
 	{
@@ -104,9 +91,6 @@ int		key_hook(int keycode, t_mlx *e)
 		{
 			e->x_player = e->x_player + cos(e->rad_alpha) * e->speed;
 			e->y_player = e->y_player - sin(e->rad_alpha) * e->speed;
-//			ft_mlx_i_clear_img(e->img, WIN_X, WIN_Y);
-//			e->render = 0;
-//			expose_hook(e);
 		}
 	}
 	if (keycode == MLX_KEY_DOWN)
@@ -115,9 +99,6 @@ int		key_hook(int keycode, t_mlx *e)
 		{
 			e->x_player = e->x_player - cos(e->rad_alpha) * e->speed;
 			e->y_player = e->y_player + sin(e->rad_alpha) * e->speed;
-//			ft_mlx_i_clear_img(e->img, WIN_X, WIN_Y);
-//			e->render = 0;
-//			expose_hook(e);
 		}
 	}
 	return (0);

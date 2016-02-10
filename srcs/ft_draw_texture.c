@@ -6,27 +6,27 @@
 /*   By: cledant <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/10 11:30:38 by cledant           #+#    #+#             */
-/*   Updated: 2016/02/10 14:13:39 by cledant          ###   ########.fr       */
+/*   Updated: 2016/02/10 19:03:37 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "wolf3d.h"
 
 void	ft_draw_texture(t_mlx *e, int disp_i_col, int begin, int end, int type,
-			double coord[2])
+			double coord[2], int overflow)
 {
 	int		i;
 	int		tex_coord[2];
 	int		draw_coord[2];
 
 	i = 0;
-	if ((coord[0] / C_SIZE) == 0)
-		tex_coord[0] = (int)coord[0] % C_SIZE;
-	else
-		tex_coord[0]= (int)coord[1] % C_SIZE;
-	while (i <= (end - begin))
+	tex_coord[0]= (int)coord[1] % C_SIZE;
+	while (i < (end - begin))
 	{
-		tex_coord[1] = ((i * C_SIZE) / (end - begin));
+		if (overflow == 0)
+			tex_coord[1] = ((i * C_SIZE) / (end - begin));
+		else
+			tex_coord[1] = (((i + overflow / 2) * C_SIZE)) / (end - begin + overflow);
 		draw_coord[0] = disp_i_col; 
 		draw_coord[1] = begin + i;
 		if (type == 3)

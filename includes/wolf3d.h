@@ -6,7 +6,7 @@
 /*   By: cledant <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/02 11:35:05 by cledant           #+#    #+#             */
-/*   Updated: 2016/02/10 13:43:01 by cledant          ###   ########.fr       */
+/*   Updated: 2016/02/10 17:29:48 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,7 +99,7 @@ int				ft_check_collision(t_mlx *e, double angle, size_t d_collision);
 int				ft_load_texture(t_mlx *e);
 void			ft_clear_texture(t_mlx *e);
 void			ft_draw_texture(t_mlx *e, int disp_i_col, int begin, int end,
-					int type, double coord[2]);
+					int type, double coord[2], int overflow);
 void			ft_mlx_i_to_i_cpy_pixel(void *dst_i, void *src_i, int d_coord[2],
 					int s_coord[2]);
 
