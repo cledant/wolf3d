@@ -1,26 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_wall_height.c                                   :+:      :+:    :+:   */
+/*   ft_mlx_i_to_i_cpy_pixel.c                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cledant <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/02/03 10:11:53 by cledant           #+#    #+#             */
-/*   Updated: 2016/02/10 13:43:04 by cledant          ###   ########.fr       */
+/*   Created: 2016/02/10 12:07:04 by cledant           #+#    #+#             */
+/*   Updated: 2016/02/10 13:39:53 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "wolf3d.h"
 
-size_t		ft_wall_height(t_mlx *e, double angle[2], int *wall_type,
-				double (*int_coord)[2])
+void	ft_mlx_i_to_i_cpy_pixel(void *dest_i, void *src_i, int d_coord[2],
+			int s_coord[2])
 {
-	double	ray_lenght;
-	size_t	w_height;
+	char	*d_pos;
+	char	*s_pos;
 
-	ray_lenght = ft_select_ray(e, angle, wall_type, int_coord);
-//	ft_putendl("BWAAAA");
-	w_height = C_SIZE * e->dist_to_proj_plane / ray_lenght;
-//	ft_putendl("J ai soif");
-	return (w_height);
+	d_pos = ft_mlx_i_position_in_2d(dest_i, d_coord[0], d_coord[1]);
+	s_pos = ft_mlx_i_position_in_2d(src_i, s_coord[0], s_coord[1]);
+	ft_memmove(d_pos, s_pos, sizeof(int));
 }

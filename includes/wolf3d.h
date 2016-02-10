@@ -6,7 +6,7 @@
 /*   By: cledant <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/02 11:35:05 by cledant           #+#    #+#             */
-/*   Updated: 2016/02/09 19:21:30 by cledant          ###   ########.fr       */
+/*   Updated: 2016/02/10 13:43:01 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,14 +85,22 @@ int				ft_what_faces_ray(double alpha);
 int				ft_what_faces_ray_for_verti(double alpha);
 double			ft_angle_dec_to_rad(double dec);
 int				ft_check_wall(t_mlx *e, int r_x, int r_y);
-double			ft_horizontal_intersection(t_mlx *e, double alpha, int *wall_type);
-double			ft_vertical_intersection(t_mlx *e, double alpha, int *wall_type);
+double			ft_horizontal_intersection(t_mlx *e, double alpha, int *wall_type,
+					double (*int_coord)[2]);
+double			ft_vertical_intersection(t_mlx *e, double alpha, int *wall_type,
+					double (*int_coord)[2]);
 double			ft_ray_lenght(int *begin, double *end, double rad_alpha, int alpha);
-double			ft_select_ray(t_mlx *e, double angle[2], int *wall_type);
-size_t			ft_wall_height(t_mlx *e, double angle[2], int *wall_type);
+double			ft_select_ray(t_mlx *e, double angle[2], int *wall_type,
+					double (*int_coord)[2]);
+size_t			ft_wall_height(t_mlx *e, double angle[2], int *wall_type,
+					double (*int_coord)[2]);
 void			ft_draw_image(t_mlx *e);
 int				ft_check_collision(t_mlx *e, double angle, size_t d_collision);
 int				ft_load_texture(t_mlx *e);
 void			ft_clear_texture(t_mlx *e);
+void			ft_draw_texture(t_mlx *e, int disp_i_col, int begin, int end,
+					int type, double coord[2]);
+void			ft_mlx_i_to_i_cpy_pixel(void *dst_i, void *src_i, int d_coord[2],
+					int s_coord[2]);
 
 #endif

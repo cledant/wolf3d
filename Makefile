@@ -6,7 +6,7 @@
 #    By: cledant <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/11/26 10:40:13 by cledant           #+#    #+#              #
-#    Updated: 2016/02/09 19:35:49 by cledant          ###   ########.fr        #
+#    Updated: 2016/02/10 13:40:22 by cledant          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,7 +34,8 @@ SRC_NAME = main.c ft_hook.c ft_mlx_i_pixel_put.c ft_mlx_i_position_in_2d.c \
 		   ft_mlx_i_draw_verti_line.c ft_mlx_i_drawline.c \
 		   ft_mlx_i_draw_hori_line.c ft_mlx_i_draw_diag_line1234.c \
 		   ft_mlx_i_draw_diag_line5678.c ft_seek_pos_x_player.c \
-		   ft_seek_pos_y_player.c ft_what_faces_ray_for_verti.c
+		   ft_seek_pos_y_player.c ft_what_faces_ray_for_verti.c \
+		   ft_draw_texture.c ft_mlx_i_to_i_cpy_pixel.c
 
 SRC_PATH = ./srcs/
 

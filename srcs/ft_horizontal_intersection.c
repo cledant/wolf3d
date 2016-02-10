@@ -6,13 +6,14 @@
 /*   By: cledant <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/02 18:08:03 by cledant           #+#    #+#             */
-/*   Updated: 2016/02/09 11:32:22 by cledant          ###   ########.fr       */
+/*   Updated: 2016/02/10 13:34:59 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "wolf3d.h"
 
-double		ft_horizontal_intersection(t_mlx *e, double alpha, int *wall_type)
+double		ft_horizontal_intersection(t_mlx *e, double alpha, int *wall_type,
+				double (*int_coord)[2])
 {
 	int			player[2];
 	double		first_int[2];
@@ -63,6 +64,8 @@ double		ft_horizontal_intersection(t_mlx *e, double alpha, int *wall_type)
 	if (first_int[0] < 0)
 		first_int[0] = 0;
 	*wall_type = e->tab[(int)first_int[1] / 64][(int)first_int[0] / 64];
+	(*int_coord)[0] = first_int[0];
+	(*int_coord)[1] = first_int[0];
 //	ft_putnbrendl(first_int[0]);
 //	ft_putnbrendl(first_int[1]);
 //	ft_putnbrendl(first_int[0] / C_SIZE);
