@@ -6,7 +6,7 @@
 /*   By: cledant <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/10 11:30:38 by cledant           #+#    #+#             */
-/*   Updated: 2016/02/10 19:03:37 by cledant          ###   ########.fr       */
+/*   Updated: 2016/02/10 20:11:43 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,8 @@ void	ft_draw_texture(t_mlx *e, int disp_i_col, int begin, int end, int type,
 			ft_mlx_i_to_i_cpy_pixel(e->img, e->img_redbrick, draw_coord, tex_coord);
 		else if (type == 4)
 			ft_mlx_i_to_i_cpy_pixel(e->img, e->img_wood, draw_coord, tex_coord);
+		else if (type == 0)
+			ft_mlx_i_to_i_cpy_pixel(e->img, e->img_d_fawn, draw_coord, tex_coord);
 		i++;
 	}
 }

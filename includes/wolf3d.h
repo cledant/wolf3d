@@ -6,7 +6,7 @@
 /*   By: cledant <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/02 11:35:05 by cledant           #+#    #+#             */
-/*   Updated: 2016/02/10 17:29:48 by cledant          ###   ########.fr       */
+/*   Updated: 2016/02/10 19:57:19 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,8 @@ typedef struct	s_mlx
 	void	*img_bluestone;
 	void	*img_redbrick;
 	void	*img_wood;
+	void	*img_d_fawn;
+	void	*img_rooftiles4;
 }				t_mlx;
 
 char			*ft_mlx_i_position_in_2d(void *img, int i, int j);

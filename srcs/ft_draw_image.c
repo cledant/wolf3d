@@ -6,7 +6,7 @@
 /*   By: cledant <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/03 09:56:45 by cledant           #+#    #+#             */
-/*   Updated: 2016/02/10 17:30:14 by cledant          ###   ########.fr       */
+/*   Updated: 2016/02/10 20:49:45 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ void	ft_draw_image(t_mlx *e)
 //		ft_putnbrendl(offset);
 		begin[0] = (int)i;
 		end[0] = (int)i;
-		if (offset > 0)
+		if (w_height <= WIN_Y)
 		{
 			begin[1] = 0;
 			end[1] = (int)(offset - 1);
