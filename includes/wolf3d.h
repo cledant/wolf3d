@@ -6,7 +6,7 @@
 /*   By: cledant <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/02 11:35:05 by cledant           #+#    #+#             */
-/*   Updated: 2016/02/11 14:26:10 by cledant          ###   ########.fr       */
+/*   Updated: 2016/02/11 20:17:10 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,6 +106,8 @@ void			ft_draw_texture(t_mlx *e, int disp_i_col, int begin, int end,
 void			ft_draw_texture(t_mlx *e, int disp_i_col, int begin, int end,
 					int type, double coord[2], int overflow);
 void			ft_draw_floor(t_mlx *e, int disp_i_col, int begin, int end,
+					int type, double angle[2]);
+void			ft_draw_ceiling(t_mlx *e, int disp_i_col, int begin, int end,
 					int type, double angle[2]);
 
 #endif
