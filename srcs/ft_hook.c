@@ -6,7 +6,7 @@
 /*   By: cledant <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/11 11:27:39 by cledant           #+#    #+#             */
-/*   Updated: 2016/02/10 15:08:37 by cledant          ###   ########.fr       */
+/*   Updated: 2016/02/11 11:09:37 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,25 @@
 
 int		expose_hook(t_mlx *e)
 {
-	ft_draw_image(e);
-	mlx_put_image_to_window(e->mlx, e->win, e->img, 0, 0);
-	return (0);
-}
+	struct timeval	s_ms[2];
+	long int		ms[2];
+	double			fps;
+	char			*s_fps;
+	char			*disp_fps;
 
-int		loop_hook(t_mlx *e)
-{
-	ft_mlx_i_clear_img(e->img, WIN_X, WIN_Y);
-	expose_hook(e);
+	gettimeofday(&(s_ms[0]), NULL);
+	ft_draw_image(e);
+	gettimeofday(&(s_ms[1]), NULL);
+	ms[0]= s_ms[0].tv_sec * 1000 + s_ms[0].tv_usec / 1000;
+	ms[1]= s_ms[1].tv_sec * 1000 + s_ms[1].tv_usec / 1000;
+	fps = ms[1] - ms[0];
+	fps = 1 / (fps / 1000);
+	s_fps = ft_itoa((int)fps);
+	disp_fps = ft_strjoin("FPS : ", s_fps);
+	mlx_put_image_to_window(e->mlx, e->win, e->img, 0, 0);
+	mlx_string_put(e->mlx, e->win, 1100, 50, 0x00FFFFFF, disp_fps);
+	ft_strdel(&s_fps);
+	ft_strdel(&disp_fps);
 	return (0);
 }
 

@@ -6,7 +6,7 @@
 #    By: cledant <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/11/26 10:40:13 by cledant           #+#    #+#              #
-#    Updated: 2016/02/11 09:46:38 by cledant          ###   ########.fr        #
+#    Updated: 2016/02/11 10:14:05 by cledant          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,7 +25,7 @@ LIBFT_PATH = ./libft
 LIBMLX_PATH = ./minilibx_macos
 
 SRC_NAME = main.c ft_hook.c ft_mlx_i_pixel_put.c ft_mlx_i_position_in_2d.c \
-		   ft_mlx_i_clear_img.c ft_lstseek_max_x.c ft_putendl_int2.c \
+		   ft_lstseek_max_x.c ft_putendl_int2.c \
 		   ft_fill_int_tab2.c ft_lstsplit_whitespaces_content.c \
 		   ft_what_faces_ray.c ft_angle_dec_to_rad.c ft_clear_texture.c \
 		   ft_check_wall.c ft_horizontal_intersection.c ft_vertical_intersection.c \

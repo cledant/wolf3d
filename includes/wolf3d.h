@@ -6,7 +6,7 @@
 /*   By: cledant <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/02 11:35:05 by cledant           #+#    #+#             */
-/*   Updated: 2016/02/11 09:52:37 by cledant          ###   ########.fr       */
+/*   Updated: 2016/02/11 11:12:39 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include <fcntl.h>
 # include <mlx.h>
 # include <math.h>
+# include <sys/time.h>
 # include "libft.h"
 # define PLAYER_X_START 250
 # define PLAYER_Y_START 250
@@ -53,6 +54,7 @@ typedef struct	s_mlx
 	size_t	dist_to_proj_plane;
 	double	inc_alpha;
 	int		x_mouse_old;
+	char	*fps_counter;
 	void	*img_bluestone;
 	void	*img_redbrick;
 	void	*img_wood;
@@ -73,14 +75,12 @@ void			ft_mlx_i_draw_diag5_line(void *e, int *p1, int *p2, int color);
 void			ft_mlx_i_draw_diag6_line(void *e, int *p1, int *p2, int color);
 void			ft_mlx_i_draw_diag7_line(void *e, int *p1, int *p2, int color);
 void			ft_mlx_i_draw_diag8_line(void *e, int *p1, int *p2, int color);
-void			ft_mlx_i_clear_img(void *img, int i, int j);
 void			ft_mlx_i_to_i_cpy_pixel(void *dst_i, void *src_i, int d_coord[2],
 					int s_coord[2]);
 int				expose_hook(t_mlx *e);
 int				key_hook(int keycode, t_mlx *e);
 int				mouse_hook(int button, int x, int y, t_mlx *e);
 int				mouse_motion(int x, int y, t_mlx *e);
-int				loop_hook(t_mlx *e);
 size_t			ft_lstseek_max_x(t_list *list);
 void			ft_putendl_int2(int **tab, int x, int y); //delete a la fin
 int				**ft_fill_int_tab2(t_list *list, int x, int y);
