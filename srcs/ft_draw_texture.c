@@ -6,7 +6,7 @@
 /*   By: cledant <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/10 11:30:38 by cledant           #+#    #+#             */
-/*   Updated: 2016/02/10 20:11:43 by cledant          ###   ########.fr       */
+/*   Updated: 2016/02/11 09:55:10 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,8 @@ void	ft_draw_texture(t_mlx *e, int disp_i_col, int begin, int end, int type,
 		if (overflow == 0)
 			tex_coord[1] = ((i * C_SIZE) / (end - begin));
 		else
-			tex_coord[1] = (((i + overflow / 2) * C_SIZE)) / (end - begin + overflow);
+			tex_coord[1] = (((i + overflow / 2) * C_SIZE)) /
+				(end - begin + overflow);
 		draw_coord[0] = disp_i_col; 
 		draw_coord[1] = begin + i;
 		if (type == 3)

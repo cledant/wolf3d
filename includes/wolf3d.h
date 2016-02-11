@@ -6,7 +6,7 @@
 /*   By: cledant <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/02 11:35:05 by cledant           #+#    #+#             */
-/*   Updated: 2016/02/10 19:57:19 by cledant          ###   ########.fr       */
+/*   Updated: 2016/02/11 09:52:37 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@
 # include <mlx.h>
 # include <math.h>
 # include "libft.h"
+# define PLAYER_X_START 250
+# define PLAYER_Y_START 250
 # define MLX_KEY_ESC 53
 # define MLX_KEY_RIGHT 124
 # define MLX_KEY_LEFT 123
@@ -72,6 +74,8 @@ void			ft_mlx_i_draw_diag6_line(void *e, int *p1, int *p2, int color);
 void			ft_mlx_i_draw_diag7_line(void *e, int *p1, int *p2, int color);
 void			ft_mlx_i_draw_diag8_line(void *e, int *p1, int *p2, int color);
 void			ft_mlx_i_clear_img(void *img, int i, int j);
+void			ft_mlx_i_to_i_cpy_pixel(void *dst_i, void *src_i, int d_coord[2],
+					int s_coord[2]);
 int				expose_hook(t_mlx *e);
 int				key_hook(int keycode, t_mlx *e);
 int				mouse_hook(int button, int x, int y, t_mlx *e);
@@ -81,8 +85,6 @@ size_t			ft_lstseek_max_x(t_list *list);
 void			ft_putendl_int2(int **tab, int x, int y); //delete a la fin
 int				**ft_fill_int_tab2(t_list *list, int x, int y);
 int				ft_lstsplit_whitespaces_content(t_list *list);
-int				ft_seek_pos_x_player(int **tab, int x, int y);
-int				ft_seek_pos_y_player(int **tab, int x, int y);
 int				ft_what_faces_ray(double alpha);
 int				ft_what_faces_ray_for_verti(double alpha);
 double			ft_angle_dec_to_rad(double dec);
@@ -102,7 +104,5 @@ int				ft_load_texture(t_mlx *e);
 void			ft_clear_texture(t_mlx *e);
 void			ft_draw_texture(t_mlx *e, int disp_i_col, int begin, int end,
 					int type, double coord[2], int overflow);
-void			ft_mlx_i_to_i_cpy_pixel(void *dst_i, void *src_i, int d_coord[2],
-					int s_coord[2]);
 
 #endif
