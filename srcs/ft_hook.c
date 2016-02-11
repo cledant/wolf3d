@@ -6,7 +6,7 @@
 /*   By: cledant <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/11 11:27:39 by cledant           #+#    #+#             */
-/*   Updated: 2016/02/11 11:09:37 by cledant          ###   ########.fr       */
+/*   Updated: 2016/02/11 11:25:29 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int		expose_hook(t_mlx *e)
 	return (0);
 }
 
-int		mouse_hook(int button, int x, int y, t_mlx *e)
+int		mouse_hook(int button, int x, int y)
 {
 	if (button == 1)
 	{
@@ -66,9 +66,6 @@ int		mouse_motion(int x, int y, t_mlx *e)
 
 int		key_hook(int keycode, t_mlx *e)
 {
-	double	tmp_sin;
-	double	tmp_cos;
-
 	if (keycode == MLX_KEY_ESC)
 	{
 		ft_memdel((void **)e->tab);

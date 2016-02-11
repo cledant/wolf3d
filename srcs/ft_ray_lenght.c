@@ -6,7 +6,7 @@
 /*   By: cledant <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/03 09:33:22 by cledant           #+#    #+#             */
-/*   Updated: 2016/02/08 14:30:48 by cledant          ###   ########.fr       */
+/*   Updated: 2016/02/11 11:27:14 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ double		ft_ray_lenght(int *begin, double *end, double rad_alpha, int alpha)
 {
 	double	ret;
 
+	ret = 0;
 	if (alpha >= -45 && alpha <= 45)
 	{
 		ret = (double)begin[0] - (double)end[0];

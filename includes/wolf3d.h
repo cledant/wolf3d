@@ -6,7 +6,7 @@
 /*   By: cledant <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/02 11:35:05 by cledant           #+#    #+#             */
-/*   Updated: 2016/02/11 11:12:39 by cledant          ###   ########.fr       */
+/*   Updated: 2016/02/11 14:26:10 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,6 @@ typedef struct	s_mlx
 	size_t	dist_to_proj_plane;
 	double	inc_alpha;
 	int		x_mouse_old;
-	char	*fps_counter;
 	void	*img_bluestone;
 	void	*img_redbrick;
 	void	*img_wood;
@@ -79,7 +78,7 @@ void			ft_mlx_i_to_i_cpy_pixel(void *dst_i, void *src_i, int d_coord[2],
 					int s_coord[2]);
 int				expose_hook(t_mlx *e);
 int				key_hook(int keycode, t_mlx *e);
-int				mouse_hook(int button, int x, int y, t_mlx *e);
+int				mouse_hook(int button, int x, int y);
 int				mouse_motion(int x, int y, t_mlx *e);
 size_t			ft_lstseek_max_x(t_list *list);
 void			ft_putendl_int2(int **tab, int x, int y); //delete a la fin
@@ -104,5 +103,9 @@ int				ft_load_texture(t_mlx *e);
 void			ft_clear_texture(t_mlx *e);
 void			ft_draw_texture(t_mlx *e, int disp_i_col, int begin, int end,
 					int type, double coord[2], int overflow);
+void			ft_draw_texture(t_mlx *e, int disp_i_col, int begin, int end,
+					int type, double coord[2], int overflow);
+void			ft_draw_floor(t_mlx *e, int disp_i_col, int begin, int end,
+					int type, double angle[2]);
 
 #endif

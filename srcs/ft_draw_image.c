@@ -6,7 +6,7 @@
 /*   By: cledant <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/03 09:56:45 by cledant           #+#    #+#             */
-/*   Updated: 2016/02/11 11:01:37 by cledant          ###   ########.fr       */
+/*   Updated: 2016/02/11 19:08:14 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void	ft_draw_image(t_mlx *e)
 			angle[0] -= e->inc_alpha;
 			angle[1] -= e->inc_alpha;
 		}
-//		ft_putendl("COLUMN");
+//		ft_putendl("COLUMN=======================================");
 //		ft_putnbrendl(i);
 //		printf("ALPHA = : %f\n", angle[0]);
 		w_height = ft_wall_height(e, angle, &wall_type, &int_coord);
@@ -62,9 +62,9 @@ void	ft_draw_image(t_mlx *e)
 			begin[1] = (int)offset;
 			end[1] = (int)(offset + w_height - 1);
 			ft_draw_texture(e, i, begin[1], end[1], wall_type, int_coord, overflow);
-			begin[1] = (int)(offset + w_height);
+			begin[1] = (int)(offset + w_height - 1);
 			end[1] = WIN_Y - 1;
-			ft_mlx_i_drawline(e->img, begin, end, 0x0000FF00);
+			ft_draw_floor(e, i, begin[1], end[1], 0, angle);
 		}
 		else
 		{
