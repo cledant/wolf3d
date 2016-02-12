@@ -6,7 +6,7 @@
 /*   By: cledant <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/03 09:56:45 by cledant           #+#    #+#             */
-/*   Updated: 2016/02/12 17:49:23 by cledant          ###   ########.fr       */
+/*   Updated: 2016/02/12 19:38:06 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,20 +27,19 @@ void	ft_draw_image(t_mlx *e)
 	wall_type = 0;
 	i = 0;
 	angle[0] = e->alpha + 30;
-	if (angle[0] >= 360)
-		angle[0] = angle[0] - 360;
-	if (angle[0] <= -360)
-		angle[0] = angle[0] + 360;
 	angle[1] = FOV / 2;
 	while (i < WIN_X)
 	{
-		ft_putnbrendl(i);
 		overflow = 0;
 		if (i != 0)
 		{
 			angle[0] -= e->inc_alpha;
 			angle[1] -= e->inc_alpha;
 		}
+		if (angle[0] >= 360)
+			angle[0] = angle[0] - 360;
+		if (angle[0] <= -360)
+			angle[0] = angle[0] + 360;
 		angle[2] = ((M_PI * angle[0]) / (double)180);
 		angle[3] = ((M_PI * angle[1]) / (double)180);
 		w_height = C_SIZE * e->dist_to_proj_plane / ft_select_ray(e, angle,

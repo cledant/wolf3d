@@ -6,7 +6,7 @@
 /*   By: cledant <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/12 14:42:46 by cledant           #+#    #+#             */
-/*   Updated: 2016/02/12 17:55:50 by cledant          ###   ########.fr       */
+/*   Updated: 2016/02/12 19:18:31 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,8 +51,6 @@ void	ft_draw_ceiling_floor(t_mlx *e, int disp_i_col, int begin[2],
 		if (type % 20 == 0)
 			ft_mlx_c_to_c_cpy_pixel(e->char_img, e->d_fawn, draw_coord[1],
 					tex_coord[1], WIN_X, C_SIZE);
-//		else
-//			ft_mlx_i_pixel_put(e->img, draw_coord[0], draw_coord[1], 0x00000000);
 		i++;
 	}
 }
