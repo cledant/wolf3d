@@ -6,14 +6,14 @@
 /*   By: cledant <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/11 12:56:26 by cledant           #+#    #+#             */
-/*   Updated: 2016/02/11 20:16:21 by cledant          ###   ########.fr       */
+/*   Updated: 2016/02/12 09:28:51 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "wolf3d.h"
 
 void	ft_draw_floor(t_mlx *e, int disp_i_col, int begin, int end, int type,
-			double angle[2])
+			double angle[4])
 {
 	int		i;
 	int		tex_coord[2];
@@ -25,19 +25,11 @@ void	ft_draw_floor(t_mlx *e, int disp_i_col, int begin, int end, int type,
 	i = 0;
 	while (i <= (end - begin))
 	{
-//		ft_putendl("DEBUT I");
-//		ft_putnbrendl(begin + i);
 		dist = e->dist_to_proj_plane * (C_SIZE / 2) / ((begin + i + 2) - (WIN_Y / 2));
-		dist = dist / cos(ft_angle_dec_to_rad(angle[1]));
-		coord[0] = e->x_player + dist * cos(ft_angle_dec_to_rad(angle[0]));
-		coord[1] = e->y_player - dist * sin(ft_angle_dec_to_rad(angle[0]));
-//		printf("DIST = %f\n", dist);
-//		ft_putnbrendl(coord[0]);
-//		ft_putnbrendl(coord[1]);
+		dist = dist / cos(angle[3]);
+		coord[0] = e->x_player + dist * cos(angle[2]);
+		coord[1] = e->y_player - dist * sin(angle[2]);
 		type = e->tab[(int)coord[1] / C_SIZE][(int)coord[0] / C_SIZE];
-//		ft_putendl("TYPE====");
-//		ft_putnbrendl(type);
-//		ft_putendl("FIN I");
 		tex_coord[0]= (int)coord[0] % C_SIZE;
 		tex_coord[1] = (int)coord[1] % C_SIZE;
 		draw_coord[0] = disp_i_col; 

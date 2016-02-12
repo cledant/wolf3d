@@ -6,7 +6,7 @@
 /*   By: cledant <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/11 10:42:33 by cledant           #+#    #+#             */
-/*   Updated: 2016/02/11 18:44:04 by cledant          ###   ########.fr       */
+/*   Updated: 2016/02/12 09:52:01 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ static int		main_part1_5(t_mlx *e, t_list *lst)
 	e->render = 0;
 	e->alpha = 0;
 	e->rad_alpha = 0;
-	e->dist_to_proj_plane = (WIN_X / 2) / tan(ft_angle_dec_to_rad(90 - FOV));
+	e->dist_to_proj_plane = (WIN_X / 2) / tan((M_PI * (90 - FOV) / (double)180));
 	e->inc_alpha = FOV / ((double)WIN_X);
 	e->x_player = PLAYER_X_START;
 	e->y_player = PLAYER_Y_START;

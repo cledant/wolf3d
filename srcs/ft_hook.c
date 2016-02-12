@@ -6,7 +6,7 @@
 /*   By: cledant <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/11 11:27:39 by cledant           #+#    #+#             */
-/*   Updated: 2016/02/11 11:25:29 by cledant          ###   ########.fr       */
+/*   Updated: 2016/02/12 10:50:57 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ int		mouse_motion(int x, int y, t_mlx *e)
 			e->alpha -= 360;
 		else if (e->alpha <= -360)
 			e->alpha += 360;
-		e->rad_alpha = ft_angle_dec_to_rad(e->alpha);
+		e->rad_alpha = (M_PI * e->alpha) / (double)180;
 	}
 	e->x_mouse_old = x;
 	return (0);

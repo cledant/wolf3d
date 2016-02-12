@@ -6,7 +6,7 @@
 /*   By: cledant <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/02 11:35:05 by cledant           #+#    #+#             */
-/*   Updated: 2016/02/11 20:17:10 by cledant          ###   ########.fr       */
+/*   Updated: 2016/02/12 09:44:01 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,16 +86,13 @@ int				**ft_fill_int_tab2(t_list *list, int x, int y);
 int				ft_lstsplit_whitespaces_content(t_list *list);
 int				ft_what_faces_ray(double alpha);
 int				ft_what_faces_ray_for_verti(double alpha);
-double			ft_angle_dec_to_rad(double dec);
 int				ft_check_wall(t_mlx *e, int r_x, int r_y);
-double			ft_horizontal_intersection(t_mlx *e, double alpha, int *wall_type,
+double			ft_horizontal_intersection(t_mlx *e, double alpha[4], int *wall_type,
 					double (*int_coord)[2]);
-double			ft_vertical_intersection(t_mlx *e, double alpha, int *wall_type,
+double			ft_vertical_intersection(t_mlx *e, double alpha[4], int *wall_type,
 					double (*int_coord)[2]);
-double			ft_ray_lenght(int *begin, double *end, double rad_alpha, int alpha);
-double			ft_select_ray(t_mlx *e, double angle[2], int *wall_type,
-					double (*int_coord)[2]);
-size_t			ft_wall_height(t_mlx *e, double angle[2], int *wall_type,
+double			ft_ray_lenght(int *begin, double *end, double rad_alpha, double alpha);
+double			ft_select_ray(t_mlx *e, double angle[4], int *wall_type,
 					double (*int_coord)[2]);
 void			ft_draw_image(t_mlx *e);
 int				ft_check_collision(t_mlx *e, double angle, size_t d_collision);
@@ -106,8 +103,8 @@ void			ft_draw_texture(t_mlx *e, int disp_i_col, int begin, int end,
 void			ft_draw_texture(t_mlx *e, int disp_i_col, int begin, int end,
 					int type, double coord[2], int overflow);
 void			ft_draw_floor(t_mlx *e, int disp_i_col, int begin, int end,
-					int type, double angle[2]);
+					int type, double angle[4]);
 void			ft_draw_ceiling(t_mlx *e, int disp_i_col, int begin, int end,
-					int type, double angle[2]);
+					int type, double angle[4]);
 
 #endif

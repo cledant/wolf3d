@@ -6,13 +6,13 @@
 /*   By: cledant <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/03 09:33:22 by cledant           #+#    #+#             */
-/*   Updated: 2016/02/11 11:27:14 by cledant          ###   ########.fr       */
+/*   Updated: 2016/02/12 10:49:48 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "wolf3d.h"
 
-double		ft_ray_lenght(int *begin, double *end, double rad_alpha, int alpha)
+double		ft_ray_lenght(int *begin, double *end, double rad_alpha, double alpha)
 {
 	double	ret;
 
