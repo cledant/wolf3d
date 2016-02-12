@@ -6,7 +6,7 @@
 /*   By: cledant <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/02 11:35:05 by cledant           #+#    #+#             */
-/*   Updated: 2016/02/12 17:23:22 by cledant          ###   ########.fr       */
+/*   Updated: 2016/02/12 20:04:37 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,19 +67,6 @@ typedef struct	s_mlx
 	char	*rooftiles4;
 }				t_mlx;
 
-char			*ft_mlx_i_position_in_2d(void *img, int i, int j);
-void			ft_mlx_i_pixel_put(void *img, int x, int y, int color);
-int				ft_mlx_i_drawline(void *e, int *p1, int *p2, int color);
-void			ft_mlx_i_draw_hori_line(void *e, int *p1, int *p2, int color);
-void			ft_mlx_i_draw_verti_line(void *e, int *p1, int *p2, int color);
-void			ft_mlx_i_draw_diag1_line(void *e, int *p1, int *p2, int color);
-void			ft_mlx_i_draw_diag2_line(void *e, int *p1, int *p2, int color);
-void			ft_mlx_i_draw_diag3_line(void *e, int *p1, int *p2, int color);
-void			ft_mlx_i_draw_diag4_line(void *e, int *p1, int *p2, int color);
-void			ft_mlx_i_draw_diag5_line(void *e, int *p1, int *p2, int color);
-void			ft_mlx_i_draw_diag6_line(void *e, int *p1, int *p2, int color);
-void			ft_mlx_i_draw_diag7_line(void *e, int *p1, int *p2, int color);
-void			ft_mlx_i_draw_diag8_line(void *e, int *p1, int *p2, int color);
 void			ft_mlx_c_to_c_cpy_pixel(char *dest_i, char *src_i, int d_coord[2],
 					int s_coord[2], int d_sizeline, int s_sizeline);
 int				expose_hook(t_mlx *e);
