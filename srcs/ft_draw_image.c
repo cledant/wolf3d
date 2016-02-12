@@ -6,7 +6,7 @@
 /*   By: cledant <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/03 09:56:45 by cledant           #+#    #+#             */
-/*   Updated: 2016/02/12 11:31:52 by cledant          ###   ########.fr       */
+/*   Updated: 2016/02/12 15:15:28 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,19 +59,16 @@ void	ft_draw_image(t_mlx *e)
 			overflow = w_height - WIN_Y;
 			w_height = WIN_Y;
 		}
-		begin[0] = (int)i;
-		end[0] = (int)i;
 		if (w_height < WIN_Y)
 		{
-			begin[1] = 0;
-			end[1] = (int)(offset);
-			ft_draw_ceiling(e, i, begin[1], end[1], 0, angle);
+			begin[0] = 0;
+			end[0] = (int)(offset);
+			begin[1] = (int)(offset + w_height - 1);
+			end[1] = WIN_Y - 1;
+			ft_draw_ceiling_floor(e, i, begin, end, 0, angle);
 			begin[1] = (int)offset;
 			end[1] = (int)(offset + w_height - 1);
 			ft_draw_texture(e, i, begin[1], end[1], wall_type, int_coord, overflow);
-			begin[1] = (int)(offset + w_height - 1);
-			end[1] = WIN_Y - 1;
-			ft_draw_floor(e, i, begin[1], end[1], 0, angle);
 		}
 		else
 		{

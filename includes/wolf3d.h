@@ -6,7 +6,7 @@
 /*   By: cledant <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/02 11:35:05 by cledant           #+#    #+#             */
-/*   Updated: 2016/02/12 09:44:01 by cledant          ###   ########.fr       */
+/*   Updated: 2016/02/12 15:38:37 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,6 @@ typedef struct	s_mlx
 	void	*mlx;
 	void	*win;
 	int		render;
-	void	*img;
 	int		**tab;
 	int		y_max;
 	int		x_max;
@@ -54,11 +53,18 @@ typedef struct	s_mlx
 	size_t	dist_to_proj_plane;
 	double	inc_alpha;
 	int		x_mouse_old;
+	void	*img;
 	void	*img_bluestone;
 	void	*img_redbrick;
 	void	*img_wood;
 	void	*img_d_fawn;
 	void	*img_rooftiles4;
+	char	*char_img;
+	char	*bluestone;
+	char	*redbrick;
+	char	*wood;
+	char	*d_fawn;
+	char	*rooftiles4;
 }				t_mlx;
 
 char			*ft_mlx_i_position_in_2d(void *img, int i, int j);
@@ -74,14 +80,13 @@ void			ft_mlx_i_draw_diag5_line(void *e, int *p1, int *p2, int color);
 void			ft_mlx_i_draw_diag6_line(void *e, int *p1, int *p2, int color);
 void			ft_mlx_i_draw_diag7_line(void *e, int *p1, int *p2, int color);
 void			ft_mlx_i_draw_diag8_line(void *e, int *p1, int *p2, int color);
-void			ft_mlx_i_to_i_cpy_pixel(void *dst_i, void *src_i, int d_coord[2],
-					int s_coord[2]);
+void			ft_mlx_c_to_c_cpy_pixel(char *dest_i, char *src_i, int d_coord[2],
+					int s_coord[2], int d_sizeline, int s_sizeline);
 int				expose_hook(t_mlx *e);
 int				key_hook(int keycode, t_mlx *e);
 int				mouse_hook(int button, int x, int y);
 int				mouse_motion(int x, int y, t_mlx *e);
 size_t			ft_lstseek_max_x(t_list *list);
-void			ft_putendl_int2(int **tab, int x, int y); //delete a la fin
 int				**ft_fill_int_tab2(t_list *list, int x, int y);
 int				ft_lstsplit_whitespaces_content(t_list *list);
 int				ft_what_faces_ray(double alpha);
@@ -102,9 +107,8 @@ void			ft_draw_texture(t_mlx *e, int disp_i_col, int begin, int end,
 					int type, double coord[2], int overflow);
 void			ft_draw_texture(t_mlx *e, int disp_i_col, int begin, int end,
 					int type, double coord[2], int overflow);
-void			ft_draw_floor(t_mlx *e, int disp_i_col, int begin, int end,
-					int type, double angle[4]);
-void			ft_draw_ceiling(t_mlx *e, int disp_i_col, int begin, int end,
-					int type, double angle[4]);
+void			ft_draw_ceiling_floor(t_mlx *e, int disp_i_col, int begin[2],
+					int end[2], int type, double angle[4]);
+void			ft_alloc_img_char(t_mlx *e);
 
 #endif

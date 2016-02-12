@@ -6,7 +6,7 @@
 /*   By: cledant <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/10 11:30:38 by cledant           #+#    #+#             */
-/*   Updated: 2016/02/11 19:09:24 by cledant          ###   ########.fr       */
+/*   Updated: 2016/02/12 13:49:10 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,13 +31,13 @@ void	ft_draw_texture(t_mlx *e, int disp_i_col, int begin, int end, int type,
 		draw_coord[0] = disp_i_col; 
 		draw_coord[1] = begin + i;
 		if (type == 3)
-			ft_mlx_i_to_i_cpy_pixel(e->img, e->img_bluestone, draw_coord, tex_coord);
+			ft_mlx_c_to_c_cpy_pixel(e->char_img, e->bluestone, draw_coord, tex_coord,WIN_X, C_SIZE);
 		else if (type == 2)
-			ft_mlx_i_to_i_cpy_pixel(e->img, e->img_redbrick, draw_coord, tex_coord);
+			ft_mlx_c_to_c_cpy_pixel(e->char_img, e->redbrick, draw_coord, tex_coord, WIN_X, C_SIZE);
 		else if (type == 4)
-			ft_mlx_i_to_i_cpy_pixel(e->img, e->img_wood, draw_coord, tex_coord);
+			ft_mlx_c_to_c_cpy_pixel(e->char_img, e->wood, draw_coord, tex_coord, WIN_X, C_SIZE);
 		else if (type == 0)
-			ft_mlx_i_to_i_cpy_pixel(e->img, e->img_d_fawn, draw_coord, tex_coord);
+			ft_mlx_c_to_c_cpy_pixel(e->char_img, e->d_fawn, draw_coord, tex_coord, WIN_X, C_SIZE);
 		i++;
 	}
 }
