@@ -6,7 +6,7 @@
 /*   By: cledant <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/11 10:42:33 by cledant           #+#    #+#             */
-/*   Updated: 2016/02/12 15:38:24 by cledant          ###   ########.fr       */
+/*   Updated: 2016/02/12 17:20:20 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,7 +126,6 @@ int				main(void)
 	mlx_hook(e.win, MOTION_NOTIFY, POINTER_MOTION_MASK, mouse_motion, &e);
 	mlx_mouse_hook(e.win, mouse_hook, &e);
 	mlx_loop_hook(e.mlx, expose_hook, &e);
-//	expose_hook(&e);
 	mlx_loop(e.mlx);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: cledant <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/12 14:42:46 by cledant           #+#    #+#             */
-/*   Updated: 2016/02/12 15:44:56 by cledant          ###   ########.fr       */
+/*   Updated: 2016/02/12 17:55:50 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,9 @@ void	ft_draw_ceiling_floor(t_mlx *e, int disp_i_col, int begin[2],
 	i = 0;
 	while (i <= (end[0] - begin[0]))
 	{
-		dist[0] = e->dist_to_proj_plane * (C_SIZE / 2) / (-(begin[0] + i + 2) + (WIN_Y / 2));
+		dist[0] = e->dist_to_proj_plane * (C_SIZE / 2) / (-(begin[0] + i) + (WIN_Y / 2));
 		dist[0] = dist[0] / tmp[2];
-		dist[1] = e->dist_to_proj_plane * (C_SIZE / 2) / ((begin[1] + i + 2) - (WIN_Y / 2));
+		dist[1] = e->dist_to_proj_plane * (C_SIZE / 2) / ((begin[1] + i) - (WIN_Y / 2));
 		dist[1] = dist[1] / tmp[2];
 		coord[0] = e->x_player + dist[0] * tmp[0];
 		coord[1] = e->y_player - dist[0] * tmp[1];

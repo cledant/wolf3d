@@ -6,7 +6,7 @@
 /*   By: cledant <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/11 11:27:39 by cledant           #+#    #+#             */
-/*   Updated: 2016/02/12 10:50:57 by cledant          ###   ########.fr       */
+/*   Updated: 2016/02/12 17:12:36 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int		expose_hook(t_mlx *e)
 	s_fps = ft_itoa((int)fps);
 	disp_fps = ft_strjoin("FPS : ", s_fps);
 	mlx_put_image_to_window(e->mlx, e->win, e->img, 0, 0);
-	mlx_string_put(e->mlx, e->win, 1100, 50, 0x00FFFFFF, disp_fps);
+	mlx_string_put(e->mlx, e->win, WIN_X - 100, 50, 0x00FFFFFF, disp_fps);
 	ft_strdel(&s_fps);
 	ft_strdel(&disp_fps);
 	return (0);
@@ -50,7 +50,7 @@ int		mouse_motion(int x, int y, t_mlx *e)
 {
 	int 	delta_x;
 
-	if ((x >= 0 && x <= WIN_X) && (y >=0 && y <= WIN_Y))
+	if ((x >= 0 && x <= WIN_X) && (y >= 0 && y <= WIN_Y))
 	{
 		delta_x = -x + e->x_mouse_old;
 		e->alpha += (delta_x / 2);
@@ -102,7 +102,7 @@ int		key_hook(int keycode, t_mlx *e)
 	}
 	if (keycode == MLX_KEY_DOWN)
 	{
-		if (ft_check_collision(e, e->alpha + 180, 10) == 1)
+		if (ft_check_collision(e, e->alpha - 180, 10) == 1)
 		{
 			e->x_player = e->x_player - cos(e->rad_alpha) * e->speed;
 			e->y_player = e->y_player + sin(e->rad_alpha) * e->speed;

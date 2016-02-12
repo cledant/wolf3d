@@ -6,7 +6,7 @@
 /*   By: cledant <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/03 09:56:45 by cledant           #+#    #+#             */
-/*   Updated: 2016/02/12 15:15:28 by cledant          ###   ########.fr       */
+/*   Updated: 2016/02/12 17:49:23 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,7 @@ void	ft_draw_image(t_mlx *e)
 	angle[1] = FOV / 2;
 	while (i < WIN_X)
 	{
-//		ft_putendl("COLUMN==============");
-//		ft_putnbrendl(i);
+		ft_putnbrendl(i);
 		overflow = 0;
 		if (i != 0)
 		{
@@ -44,13 +43,8 @@ void	ft_draw_image(t_mlx *e)
 		}
 		angle[2] = ((M_PI * angle[0]) / (double)180);
 		angle[3] = ((M_PI * angle[1]) / (double)180);
-//		printf("ANGLE DEC : %f\n", angle[0]);
-//		printf("ANGLE RAD : %f\n", angle[2]);
 		w_height = C_SIZE * e->dist_to_proj_plane / ft_select_ray(e, angle,
 				&wall_type, &int_coord);
-//		printf("DIST TO PROJ PLANE : %zd\n", e->dist_to_proj_plane);
-//		ft_putendl("JUSTE APRES SELECT RAY");
-//		ft_putnbrendl(w_height);
 		offset = (WIN_Y - w_height) / 2;
 		if (offset < 0)
 			offset = 0;
