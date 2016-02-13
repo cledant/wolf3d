@@ -6,7 +6,7 @@
 /*   By: cledant <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/03 09:56:45 by cledant           #+#    #+#             */
-/*   Updated: 2016/02/12 19:38:06 by cledant          ###   ########.fr       */
+/*   Updated: 2016/02/13 12:34:31 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@ void	ft_draw_image(t_mlx *e)
 	angle[1] = FOV / 2;
 	while (i < WIN_X)
 	{
+//		printf("===========COLUMN==========\n");
+//		printf("%d\n", i);
 		overflow = 0;
 		if (i != 0)
 		{
@@ -44,6 +46,10 @@ void	ft_draw_image(t_mlx *e)
 		angle[3] = ((M_PI * angle[1]) / (double)180);
 		w_height = C_SIZE * e->dist_to_proj_plane / ft_select_ray(e, angle,
 				&wall_type, &int_coord);
+//		printf("WALL HEIGHT : %zu\n",w_height);
+//		printf("WALL TYPE = %d\n", wall_type);
+//		printf("INTER X = %f\n", int_coord[0]);
+//		printf("INTER Y = %f\n", int_coord[1]);
 		offset = (WIN_Y - w_height) / 2;
 		if (offset < 0)
 			offset = 0;
@@ -58,7 +64,7 @@ void	ft_draw_image(t_mlx *e)
 			end[0] = (int)(offset);
 			begin[1] = (int)(offset + w_height - 1);
 			end[1] = WIN_Y - 1;
-			ft_draw_ceiling_floor(e, i, begin, end, 0, angle);
+			ft_draw_ceiling_floor(e, i, begin, end, angle);
 			begin[1] = (int)offset;
 			end[1] = (int)(offset + w_height - 1);
 			ft_draw_texture(e, i, begin[1], end[1], wall_type, int_coord, overflow);

@@ -6,7 +6,7 @@
 /*   By: cledant <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/02 11:35:05 by cledant           #+#    #+#             */
-/*   Updated: 2016/02/12 20:04:37 by cledant          ###   ########.fr       */
+/*   Updated: 2016/02/13 13:29:54 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@
 # include <math.h>
 # include <sys/time.h>
 # include "libft.h"
-# define PLAYER_X_START 250
-# define PLAYER_Y_START 250
+# define PLAYER_X_START 640
+# define PLAYER_Y_START 640
 # define MLX_KEY_ESC 53
 # define MLX_KEY_RIGHT 124
 # define MLX_KEY_LEFT 123
@@ -30,7 +30,6 @@
 # define WIN_Y 720
 # define C_SIZE 64
 # define FOV 60
-# define ROT_SPEED 2
 # define SPEED 10
 # define KEY_PRESS_MASK (1L<<0)
 # define KEY_PRESS 2
@@ -54,17 +53,29 @@ typedef struct	s_mlx
 	double	inc_alpha;
 	int		x_mouse_old;
 	void	*img;
-	void	*img_bluestone;
 	void	*img_redbrick;
 	void	*img_wood;
-	void	*img_d_fawn;
-	void	*img_rooftiles4;
+	void	*img_brown20;
+	void	*img_cobblestone;
+	void	*img_diamondred;
+	void	*img_patternbrown;
+	void	*img_woodherring2;
+	void	*img_woodrough;
+	void	*img_redgreycheck2;
+	void	*img_greygreencheck;
+	void	*img_hexbrown;
 	char	*char_img;
-	char	*bluestone;
 	char	*redbrick;
 	char	*wood;
-	char	*d_fawn;
-	char	*rooftiles4;
+	char	*brown20;
+	char	*cobblestone;
+	char	*diamondred;
+	char	*patternbrown;
+	char	*woodherring2;
+	char	*woodrough;
+	char	*redgreycheck2;
+	char	*greygreencheck;
+	char	*hexbrown;
 }				t_mlx;
 
 void			ft_mlx_c_to_c_cpy_pixel(char *dest_i, char *src_i, int d_coord[2],
@@ -95,7 +106,7 @@ void			ft_draw_texture(t_mlx *e, int disp_i_col, int begin, int end,
 void			ft_draw_texture(t_mlx *e, int disp_i_col, int begin, int end,
 					int type, double coord[2], int overflow);
 void			ft_draw_ceiling_floor(t_mlx *e, int disp_i_col, int begin[2],
-					int end[2], int type, double angle[4]);
+					int end[2], double angle[4]);
 void			ft_alloc_img_char(t_mlx *e);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: cledant <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/09 18:54:40 by cledant           #+#    #+#             */
-/*   Updated: 2016/02/10 20:12:10 by cledant          ###   ########.fr       */
+/*   Updated: 2016/02/13 13:27:55 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,6 @@ int		ft_load_texture(t_mlx *e)
 
 	width = C_SIZE;
 	length = C_SIZE;
-	if ((e->img_bluestone = mlx_xpm_file_to_image(e->mlx,
-			"./textures/bluestone.xpm", &width, &length)) == NULL)
-	{
-		return (0);
-	}
 	if ((e->img_redbrick = mlx_xpm_file_to_image(e->mlx,
 			"./textures/redbrick.xpm", &width, &length)) == NULL)
 	{
@@ -34,13 +29,48 @@ int		ft_load_texture(t_mlx *e)
 	{
 		return (0);
 	}
-	if ((e->img_d_fawn = mlx_xpm_file_to_image(e->mlx,
-			"./textures/diamondfawn.xpm", &width, &length)) == NULL)
+	if ((e->img_brown20 = mlx_xpm_file_to_image(e->mlx,
+			"./textures/brown20.xpm", &width, &length)) == NULL)
 	{
 		return (0);
 	}
-	if ((e->img_rooftiles4 = mlx_xpm_file_to_image(e->mlx,
-			"./textures/rooftiles4.xpm", &width, &length)) == NULL)
+	if ((e->img_cobblestone = mlx_xpm_file_to_image(e->mlx,
+			"./textures/cobblestone.xpm", &width, &length)) == NULL)
+	{
+		return (0);
+	}
+	if ((e->img_diamondred = mlx_xpm_file_to_image(e->mlx,
+			"./textures/diamondred.xpm", &width, &length)) == NULL)
+	{
+		return (0);
+	}
+	if ((e->img_patternbrown = mlx_xpm_file_to_image(e->mlx,
+			"./textures/patternbrown.xpm", &width, &length)) == NULL)
+	{
+		return (0);
+	}
+	if ((e->img_woodherring2 = mlx_xpm_file_to_image(e->mlx,
+			"./textures/woodherring2.xpm", &width, &length)) == NULL)
+	{
+		return (0);
+	}
+	if ((e->img_woodrough = mlx_xpm_file_to_image(e->mlx,
+			"./textures/woodrough.xpm", &width, &length)) == NULL)
+	{
+		return (0);
+	}
+	if ((e->img_redgreycheck2 = mlx_xpm_file_to_image(e->mlx,
+			"./textures/redgreycheck2.xpm", &width, &length)) == NULL)
+	{
+		return (0);
+	}
+	if ((e->img_greygreencheck = mlx_xpm_file_to_image(e->mlx,
+			"./textures/greygreencheck.xpm", &width, &length)) == NULL)
+	{
+		return (0);
+	}
+	if ((e->img_hexbrown = mlx_xpm_file_to_image(e->mlx,
+			"./textures/hexbrown.xpm", &width, &length)) == NULL)
 	{
 		return (0);
 	}

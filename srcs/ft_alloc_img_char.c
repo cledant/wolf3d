@@ -6,7 +6,7 @@
 /*   By: cledant <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/12 13:25:36 by cledant           #+#    #+#             */
-/*   Updated: 2016/02/12 13:52:55 by cledant          ###   ########.fr       */
+/*   Updated: 2016/02/13 13:31:16 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,15 @@ void	ft_alloc_img_char(t_mlx *e)
 	int		sizeline;
 
 	e->char_img = mlx_get_data_addr(e->img, &bpp, &sizeline, &endian);
-	e->bluestone = mlx_get_data_addr(e->img_bluestone, &bpp, &sizeline, &endian);
 	e->redbrick = mlx_get_data_addr(e->img_redbrick, &bpp, &sizeline, &endian);
 	e->wood = mlx_get_data_addr(e->img_wood, &bpp, &sizeline, &endian);
-	e->d_fawn = mlx_get_data_addr(e->img_d_fawn, &bpp, &sizeline, &endian);
-	e->rooftiles4 = mlx_get_data_addr(e->img_rooftiles4, &bpp, &sizeline, &endian);
+	e->brown20 = mlx_get_data_addr(e->img_brown20, &bpp, &sizeline, &endian);
+	e->cobblestone = mlx_get_data_addr(e->img_cobblestone, &bpp, &sizeline, &endian);
+	e->diamondred = mlx_get_data_addr(e->img_diamondred, &bpp, &sizeline, &endian);
+	e->patternbrown = mlx_get_data_addr(e->img_patternbrown, &bpp, &sizeline, &endian);
+	e->woodherring2 = mlx_get_data_addr(e->img_woodherring2, &bpp, &sizeline, &endian);
+	e->woodrough = mlx_get_data_addr(e->img_woodrough, &bpp, &sizeline, &endian);
+	e->redgreycheck2 = mlx_get_data_addr(e->img_redgreycheck2, &bpp, &sizeline, &endian);
+	e->greygreencheck = mlx_get_data_addr(e->img_greygreencheck, &bpp, &sizeline, &endian);
+	e->hexbrown = mlx_get_data_addr(e->img_hexbrown, &bpp, &sizeline, &endian);
 }
