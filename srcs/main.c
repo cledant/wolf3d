@@ -6,7 +6,7 @@
 /*   By: cledant <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/11 10:42:33 by cledant           #+#    #+#             */
-/*   Updated: 2016/02/12 17:20:20 by cledant          ###   ########.fr       */
+/*   Updated: 2016/02/13 17:47:21 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,15 +49,7 @@ static int		main_part1_5(t_mlx *e, t_list *lst)
 	}
 	ft_lstdel(&lst, &ft_bzero);
 	e->tab = tab;
-	e->render = 0;
-	e->alpha = 0;
-	e->rad_alpha = 0;
-	e->dist_to_proj_plane = (WIN_X / 2) / tan((M_PI * (90 - FOV) / (double)180));
-	e->inc_alpha = FOV / ((double)WIN_X);
-	e->x_player = PLAYER_X_START;
-	e->y_player = PLAYER_Y_START;
-	e->speed = SPEED;
-	e->x_mouse_old = WIN_X / 2;
+	ft_init_struct(e);
 	return (1);
 }
 
@@ -87,11 +79,29 @@ static int		main_part2(t_mlx *e, int fd, t_list *lst)
 	return (1);
 }
 
-static void		ft_free_all(t_mlx *e)
+static int		main_part1_2(t_mlx *e, int fd, t_list *lst)
 {
-	mlx_destroy_window(e->mlx, e->win);
-	mlx_destroy_image(e->mlx, e->img);
-	ft_memdel((void **)e->tab);
+	if (ft_load_texture(e) == 0)
+	{
+		ft_clear_texture(e);
+		ft_putendl("Error loading texture");
+		return (0);
+	}
+	ft_alloc_img_char(e);
+	ft_alloc_img_char_2(e);
+	if ((main_part2(e, fd, lst)) == 0)
+	{
+		ft_clear_texture(e);
+		return (0);
+	}
+	if (close(fd) == -1)
+	{
+		ft_putendl("Error closing fd");
+		ft_clear_texture(e);
+		ft_free_all(e);
+		return (0);
+	}
+	return (1);
 }
 
 int				main(void)
@@ -108,23 +118,10 @@ int				main(void)
 	}
 	if (main_part1(&e) == 0)
 		return (0);
-	if (ft_load_texture(&e) == 0)
-	{
-		ft_clear_texture(&e);
-		ft_putendl("Error loading texture");
+	if (main_part1_2(&e, fd, lst) == 0)
 		return (0);
-	}
-	ft_alloc_img_char(&e);
-	if ((main_part2(&e, fd, lst)) == 0)
-		return (0);
-	if (close(fd) == -1)
-	{
-		ft_free_all(&e);
-		return (0);
-	}
 	mlx_hook(e.win, KEY_PRESS, KEY_PRESS_MASK, key_hook, &e);
 	mlx_hook(e.win, MOTION_NOTIFY, POINTER_MOTION_MASK, mouse_motion, &e);
-	mlx_mouse_hook(e.win, mouse_hook, &e);
 	mlx_loop_hook(e.mlx, expose_hook, &e);
 	mlx_loop(e.mlx);
 	return (0);

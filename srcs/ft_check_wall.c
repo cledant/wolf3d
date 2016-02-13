@@ -6,7 +6,7 @@
 /*   By: cledant <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/02 19:23:14 by cledant           #+#    #+#             */
-/*   Updated: 2016/02/13 11:30:03 by cledant          ###   ########.fr       */
+/*   Updated: 2016/02/13 17:16:05 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,11 @@
 
 int		ft_check_wall(t_mlx *e, int r_x, int r_y)
 {
-	if (r_x / 64 >= e-> x_max || r_x < 0)
+	if (r_x / 64 >= e->x_max || r_x < 0)
 		return (1);
 	if (r_y / 64 >= e->y_max || r_y < 0)
 		return (1);
-	if (e->tab[r_y / 64][r_x / 64] >= 1 && e->tab[r_y / 64][r_x / 64] <= 4)
+	if (e->tab[r_y / 64][r_x / 64] >= 1 && e->tab[r_y / 64][r_x / 64] <= 9)
 		return (1);
 	else
 		return (-1);

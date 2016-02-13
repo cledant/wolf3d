@@ -6,14 +6,14 @@
 /*   By: cledant <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/12 14:42:46 by cledant           #+#    #+#             */
-/*   Updated: 2016/02/13 13:29:17 by cledant          ###   ########.fr       */
+/*   Updated: 2016/02/13 20:43:33 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "wolf3d.h"
 
 void	ft_draw_ceiling_floor(t_mlx *e, int disp_i_col, int begin[2],
-			int end[2], double angle[4])
+			int end[2], double angle[8])
 {
 	int		i;
 	int		type[2];
@@ -23,9 +23,9 @@ void	ft_draw_ceiling_floor(t_mlx *e, int disp_i_col, int begin[2],
 	double	dist[2];
 	double	tmp[3];
 
-	tmp[0] = cos(angle[2]);
-	tmp[1] = sin(angle[2]);
-	tmp[2] = cos(angle[3]);
+	tmp[0] = angle[4];
+	tmp[1] = angle[5];
+	tmp[2] = angle[7];
 	i = 0;
 	while (i <= (end[0] - begin[0]))
 	{

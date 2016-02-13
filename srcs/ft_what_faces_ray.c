@@ -6,7 +6,7 @@
 /*   By: cledant <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/02 17:59:49 by cledant           #+#    #+#             */
-/*   Updated: 2016/02/05 14:22:31 by cledant          ###   ########.fr       */
+/*   Updated: 2016/02/13 19:07:05 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,6 @@ int		ft_what_faces_ray(double alpha)
 		return (1);
 	else if (alpha <= -180 && alpha >= -360)
 		return (1);
-//	else if (alpha >= 360 && alpha <= 540)
-//		return (1);
 	else
 		return (-1);
 }

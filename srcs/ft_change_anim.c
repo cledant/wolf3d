@@ -1,27 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_what_faces_ray_for_verti.c                      :+:      :+:    :+:   */
+/*   ft_change_anim.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cledant <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/02/04 12:45:59 by cledant           #+#    #+#             */
-/*   Updated: 2016/02/13 19:07:38 by cledant          ###   ########.fr       */
+/*   Created: 2016/02/13 15:18:52 by cledant           #+#    #+#             */
+/*   Updated: 2016/02/13 15:27:24 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "wolf3d.h"
 
-int		ft_what_faces_ray_for_verti(double alpha)
+void	ft_change_anim(t_mlx *e)
 {
-	if (alpha <= 90 && alpha >= 0)
-		return (1);
-	else if (alpha >= 270 && alpha < 360)
-		return (1);
-	else if (alpha <= 0 && alpha >= -90)
-		return (1);
-	else if (alpha <= -270 && alpha > -360)
-		return (1);
-	else
-		return (-1);
+	if (e->counter_chu % ANIM_SPEED == 0)
+	{
+		(e->tab[28][33])++;
+		if (e->tab[28][33] == 10)
+			e->tab[28][33] = 5;
+	}
+	(e->counter_chu)++;
 }

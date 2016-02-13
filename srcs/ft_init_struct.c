@@ -1,27 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_what_faces_ray_for_verti.c                      :+:      :+:    :+:   */
+/*   ft_init_struct.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cledant <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/02/04 12:45:59 by cledant           #+#    #+#             */
-/*   Updated: 2016/02/13 19:07:38 by cledant          ###   ########.fr       */
+/*   Created: 2016/02/13 16:55:48 by cledant           #+#    #+#             */
+/*   Updated: 2016/02/13 20:22:10 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "wolf3d.h"
 
-int		ft_what_faces_ray_for_verti(double alpha)
+void	ft_init_struct(t_mlx *e)
 {
-	if (alpha <= 90 && alpha >= 0)
-		return (1);
-	else if (alpha >= 270 && alpha < 360)
-		return (1);
-	else if (alpha <= 0 && alpha >= -90)
-		return (1);
-	else if (alpha <= -270 && alpha > -360)
-		return (1);
-	else
-		return (-1);
+	e->render = 0;
+	e->alpha = 0;
+	e->rad_alpha = 0;
+	e->cos_rad_alpha = 1;
+	e->sin_rad_alpha = 0;
+	e->dist_to_proj_plane = (WIN_X / 2) / tan((M_PI * (90 - FOV) /
+				(double)180));
+	e->inc_alpha = FOV / ((double)WIN_X);
+	e->x_player = PLAYER_X_START;
+	e->y_player = PLAYER_Y_START;
+	e->counter_chu = 0;
+	e->speed = SPEED;
+	e->x_mouse_old = WIN_X / 2;
 }

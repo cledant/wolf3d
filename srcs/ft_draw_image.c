@@ -6,7 +6,7 @@
 /*   By: cledant <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/03 09:56:45 by cledant           #+#    #+#             */
-/*   Updated: 2016/02/13 12:34:31 by cledant          ###   ########.fr       */
+/*   Updated: 2016/02/13 20:36:20 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	ft_draw_image(t_mlx *e)
 	int		end[2];
 	size_t	w_height;
 	int		offset;
-	double	angle[4];
+	double	angle[8];
 	int 	wall_type;
 	double	int_coord[2];
 	int 	overflow;
@@ -30,8 +30,6 @@ void	ft_draw_image(t_mlx *e)
 	angle[1] = FOV / 2;
 	while (i < WIN_X)
 	{
-//		printf("===========COLUMN==========\n");
-//		printf("%d\n", i);
 		overflow = 0;
 		if (i != 0)
 		{
@@ -44,12 +42,12 @@ void	ft_draw_image(t_mlx *e)
 			angle[0] = angle[0] + 360;
 		angle[2] = ((M_PI * angle[0]) / (double)180);
 		angle[3] = ((M_PI * angle[1]) / (double)180);
+		angle[4] = cos(angle[2]);
+		angle[5] = sin(angle[2]);
+		angle[6] = tan(angle[2]);
+		angle[7] = cos(angle[3]);
 		w_height = C_SIZE * e->dist_to_proj_plane / ft_select_ray(e, angle,
 				&wall_type, &int_coord);
-//		printf("WALL HEIGHT : %zu\n",w_height);
-//		printf("WALL TYPE = %d\n", wall_type);
-//		printf("INTER X = %f\n", int_coord[0]);
-//		printf("INTER Y = %f\n", int_coord[1]);
 		offset = (WIN_Y - w_height) / 2;
 		if (offset < 0)
 			offset = 0;
@@ -65,8 +63,8 @@ void	ft_draw_image(t_mlx *e)
 			begin[1] = (int)(offset + w_height - 1);
 			end[1] = WIN_Y - 1;
 			ft_draw_ceiling_floor(e, i, begin, end, angle);
-			begin[1] = (int)offset;
-			end[1] = (int)(offset + w_height - 1);
+			begin[1] = (int)offset - 2;
+			end[1] = (int)(offset + w_height + 1);
 			ft_draw_texture(e, i, begin[1], end[1], wall_type, int_coord, overflow);
 		}
 		else

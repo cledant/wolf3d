@@ -6,7 +6,7 @@
 /*   By: cledant <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/13 11:57:03 by cledant           #+#    #+#             */
-/*   Updated: 2016/02/13 13:31:32 by cledant          ###   ########.fr       */
+/*   Updated: 2016/02/13 17:36:42 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,4 +36,7 @@ void	ft_clear_texture(t_mlx *e)
 		mlx_destroy_image(e->mlx, e->img_greygreencheck);
 	if (e->img_hexbrown != NULL)
 		mlx_destroy_image(e->mlx, e->img_hexbrown);
+	if (e->img_c1 != NULL)
+		mlx_destroy_image(e->mlx, e->img_c1);
+	ft_clear_texture_2(e);
 }

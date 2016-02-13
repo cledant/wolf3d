@@ -1,27 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_what_faces_ray_for_verti.c                      :+:      :+:    :+:   */
+/*   ft_clear_texture_2.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cledant <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/02/04 12:45:59 by cledant           #+#    #+#             */
-/*   Updated: 2016/02/13 19:07:38 by cledant          ###   ########.fr       */
+/*   Created: 2016/02/13 17:37:42 by cledant           #+#    #+#             */
+/*   Updated: 2016/02/13 17:38:52 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "wolf3d.h"
 
-int		ft_what_faces_ray_for_verti(double alpha)
+void	ft_clear_texture_2(t_mlx *e)
 {
-	if (alpha <= 90 && alpha >= 0)
-		return (1);
-	else if (alpha >= 270 && alpha < 360)
-		return (1);
-	else if (alpha <= 0 && alpha >= -90)
-		return (1);
-	else if (alpha <= -270 && alpha > -360)
-		return (1);
-	else
-		return (-1);
+	if (e->img_c2 != NULL)
+		mlx_destroy_image(e->mlx, e->img_c2);
+	if (e->img_c3 != NULL)
+		mlx_destroy_image(e->mlx, e->img_c3);
+	if (e->img_c4 != NULL)
+		mlx_destroy_image(e->mlx, e->img_c4);
+	if (e->img_c5 != NULL)
+		mlx_destroy_image(e->mlx, e->img_c5);
 }

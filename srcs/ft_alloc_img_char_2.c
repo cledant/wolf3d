@@ -1,27 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_what_faces_ray_for_verti.c                      :+:      :+:    :+:   */
+/*   ft_alloc_img_char_2.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cledant <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/02/04 12:45:59 by cledant           #+#    #+#             */
-/*   Updated: 2016/02/13 19:07:38 by cledant          ###   ########.fr       */
+/*   Created: 2016/02/13 17:22:27 by cledant           #+#    #+#             */
+/*   Updated: 2016/02/13 17:23:13 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "wolf3d.h"
 
-int		ft_what_faces_ray_for_verti(double alpha)
+void	ft_alloc_img_char_2(t_mlx *e)
 {
-	if (alpha <= 90 && alpha >= 0)
-		return (1);
-	else if (alpha >= 270 && alpha < 360)
-		return (1);
-	else if (alpha <= 0 && alpha >= -90)
-		return (1);
-	else if (alpha <= -270 && alpha > -360)
-		return (1);
-	else
-		return (-1);
+	int		endian;
+	int		bpp;
+	int		sizeline;
+
+	e->c3 = mlx_get_data_addr(e->img_c3, &bpp, &sizeline, &endian);
+	e->c4 = mlx_get_data_addr(e->img_c4, &bpp, &sizeline, &endian);
+	e->c5 = mlx_get_data_addr(e->img_c5, &bpp, &sizeline, &endian);
 }

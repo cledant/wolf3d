@@ -6,7 +6,7 @@
 /*   By: cledant <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/11 11:27:39 by cledant           #+#    #+#             */
-/*   Updated: 2016/02/13 11:55:34 by cledant          ###   ########.fr       */
+/*   Updated: 2016/02/13 20:44:10 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,11 @@ int		expose_hook(t_mlx *e)
 	char			*disp_fps;
 
 	gettimeofday(&(s_ms[0]), NULL);
+	ft_change_anim(e);
 	ft_draw_image(e);
 	gettimeofday(&(s_ms[1]), NULL);
-	ms[0]= s_ms[0].tv_sec * 1000 + s_ms[0].tv_usec / 1000;
-	ms[1]= s_ms[1].tv_sec * 1000 + s_ms[1].tv_usec / 1000;
+	ms[0] = s_ms[0].tv_sec * 1000 + s_ms[0].tv_usec / 1000;
+	ms[1] = s_ms[1].tv_sec * 1000 + s_ms[1].tv_usec / 1000;
 	fps = ms[1] - ms[0];
 	fps = 1 / (fps / 1000);
 	s_fps = ft_itoa((int)fps);
@@ -36,19 +37,9 @@ int		expose_hook(t_mlx *e)
 	return (0);
 }
 
-int		mouse_hook(int button, int x, int y)
-{
-	if (button == 1)
-	{
-		ft_putnbrendl(x);
-		ft_putnbrendl(y);
-	}
-	return (0);
-}
-
 int		mouse_motion(int x, int y, t_mlx *e)
 {
-	int 	delta_x;
+	int		delta_x;
 
 	if ((x >= 0 && x <= WIN_X) && (y >= 0 && y <= WIN_Y))
 	{
@@ -62,6 +53,8 @@ int		mouse_motion(int x, int y, t_mlx *e)
 				e->alpha += 360;
 		}
 		e->rad_alpha = (M_PI * e->alpha) / (double)180;
+		e->cos_rad_alpha = cos(e->rad_alpha);
+		e->sin_rad_alpha = sin(e->rad_alpha);
 	}
 	e->x_mouse_old = x;
 	return (0);
@@ -83,32 +76,32 @@ int		key_hook(int keycode, t_mlx *e)
 	{
 		if (ft_check_collision(e, e->alpha - 90, 15) == 1)
 		{
-			e->x_player = e->x_player + sin(e->rad_alpha) * e->speed;
-			e->y_player = e->y_player + cos(e->rad_alpha) * e->speed;
+			e->x_player = e->x_player + e->sin_rad_alpha * e->speed;
+			e->y_player = e->y_player + e->cos_rad_alpha * e->speed;
 		}
 	}
 	if (keycode == MLX_KEY_LEFT)
 	{
 		if (ft_check_collision(e, e->alpha + 90, 15) == 1)
 		{
-			e->x_player = e->x_player - sin(e->rad_alpha) * e->speed;
-			e->y_player = e->y_player - cos(e->rad_alpha) * e->speed;
+			e->x_player = e->x_player - e->sin_rad_alpha * e->speed;
+			e->y_player = e->y_player - e->cos_rad_alpha * e->speed;
 		}
 	}
 	if (keycode == MLX_KEY_UP)
 	{
 		if (ft_check_collision(e, e->alpha, 15) == 1)
 		{
-			e->x_player = e->x_player + cos(e->rad_alpha) * e->speed;
-			e->y_player = e->y_player - sin(e->rad_alpha) * e->speed;
+			e->x_player = e->x_player + e->cos_rad_alpha * e->speed;
+			e->y_player = e->y_player - e->sin_rad_alpha * e->speed;
 		}
 	}
 	if (keycode == MLX_KEY_DOWN)
 	{
 		if (ft_check_collision(e, e->alpha - 180, 10) == 1)
 		{
-			e->x_player = e->x_player - cos(e->rad_alpha) * e->speed;
-			e->y_player = e->y_player + sin(e->rad_alpha) * e->speed;
+			e->x_player = e->x_player - e->cos_rad_alpha * e->speed;
+			e->y_player = e->y_player + e->sin_rad_alpha * e->speed;
 		}
 	}
 	return (0);

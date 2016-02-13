@@ -6,69 +6,69 @@
 /*   By: cledant <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/03 09:33:22 by cledant           #+#    #+#             */
-/*   Updated: 2016/02/12 17:20:31 by cledant          ###   ########.fr       */
+/*   Updated: 2016/02/13 20:52:58 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "wolf3d.h"
 
-double		ft_ray_lenght(int *begin, double *end, double rad_alpha, double alpha)
+double		ft_ray_lenght(int *begin, double *end, double angle[8])
 {
 	double	ret;
 
 	ret = 0;
-	if (alpha >= -45 && alpha <= 45)
+	if (angle[0] >= -45 && angle[0] <= 45)
 	{
 		ret = (double)begin[0] - (double)end[0];
-		ret = ret / cos(rad_alpha);
+		ret = ret / angle[4];
 		ret = fabs(ret);
 	}
-	else if (alpha > 45 && alpha < 135)
+	else if (angle[0] > 45 && angle[0] < 135)
 	{
 		ret = (double)begin[1] - (double)end[1];
-		ret = ret / sin(rad_alpha);
+		ret = ret / angle[5];
 		ret = fabs(ret);
 	}
-	else if (alpha >= 135 && alpha <= 225)
+	else if (angle[0] >= 135 && angle[0] <= 225)
 	{
 		ret = (double)begin[0] - (double)end[0];
-		ret = ret / cos(rad_alpha);
+		ret = ret / angle[4];
 		ret = fabs(ret);
 	}
-	else if (alpha > 225 && alpha < 315)
+	else if (angle[0] > 225 && angle[0] < 315)
 	{
 		ret = (double)begin[1] - (double)end[1];
-		ret = ret / sin(rad_alpha);
+		ret = ret / angle[5];
 		ret = fabs(ret);
 	}
-	else if (alpha >= 315 && alpha <= 405)
+	else if (angle[0] >= 315 && angle[0] <= 405)
 	{
 		ret = (double)begin[0] - (double)end[0];
-		ret = ret / cos(rad_alpha);
+		ret = ret / angle[4];
 		ret = fabs(ret);
 	}
-	else if (alpha < -45 && alpha > -135)
+	else if (angle[0] < -45 && angle[0] > -135)
 	{
 		ret = (double)begin[1] - (double)end[1];
-		ret = ret / sin(rad_alpha);
+		ret = ret / angle[5];
 		ret = fabs(ret);
 	}
-	else if (alpha <= -135 && alpha >= -225)
+	else if (angle[0] <= -135 && angle[0] >= -225)
 	{
 		ret = (double)begin[0] - (double)end[0];
-		ret = ret / cos(rad_alpha);
+		ret = ret / angle[4];
 		ret = fabs(ret);
 	}
-	else if (alpha < -225 && alpha > -315)
+	else if (angle[0] < -225 && angle[0] > -315)
 	{
 		ret = (double)begin[1] - (double)end[1];
-		ret = ret / sin(rad_alpha);
+		ret = ret / angle[5];
 		ret = fabs(ret);
 	}
-	else if (alpha <= -315 && alpha >= -405)
+	else if (angle[0] <= -315 && angle[0] >= -405)
 	{
 		ret = (double)begin[0] - (double)end[0];
-		ret = ret / cos(rad_alpha);
+		ret = ret / angle[4];
 		ret = fabs(ret);
 	}
 	return (ret);
