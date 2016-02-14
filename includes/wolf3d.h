@@ -6,7 +6,7 @@
 /*   By: cledant <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/02 11:35:05 by cledant           #+#    #+#             */
-/*   Updated: 2016/02/14 15:39:08 by cledant          ###   ########.fr       */
+/*   Updated: 2016/02/14 17:36:41 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@
 # define MLX_KEY_LEFT 123
 # define MLX_KEY_UP 126
 # define MLX_KEY_DOWN 125
-# define WIN_X 1280
+# define WIN_X 960
 # define WIN_Y 720
 # define C_SIZE 64
 # define FOV 60
@@ -110,7 +110,8 @@ double			ft_ray_lenght(int *begin, double *end, double angle[8]);
 double			ft_select_ray(t_mlx *e, double angle[8], int *wall_type,
 					double (*int_coord)[2]);
 void			ft_draw_image(t_mlx *e);
-int				ft_check_collision(t_mlx *e, double angle, size_t d_collision);
+int				ft_check_collision(t_mlx *e, double angle, size_t d_collision,
+					int keycode);
 int				ft_load_texture(t_mlx *e);
 void			ft_clear_texture(t_mlx *e);
 void			ft_clear_texture_2(t_mlx *e);

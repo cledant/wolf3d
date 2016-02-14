@@ -6,7 +6,7 @@
 /*   By: cledant <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/11 11:27:39 by cledant           #+#    #+#             */
-/*   Updated: 2016/02/13 20:44:10 by cledant          ###   ########.fr       */
+/*   Updated: 2016/02/14 17:29:56 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,36 +73,12 @@ int		key_hook(int keycode, t_mlx *e)
 		exit(0);
 	}
 	if (keycode == MLX_KEY_RIGHT)
-	{
-		if (ft_check_collision(e, e->alpha - 90, 15) == 1)
-		{
-			e->x_player = e->x_player + e->sin_rad_alpha * e->speed;
-			e->y_player = e->y_player + e->cos_rad_alpha * e->speed;
-		}
-	}
+		ft_check_collision(e, e->alpha - 90, 15, keycode);
 	if (keycode == MLX_KEY_LEFT)
-	{
-		if (ft_check_collision(e, e->alpha + 90, 15) == 1)
-		{
-			e->x_player = e->x_player - e->sin_rad_alpha * e->speed;
-			e->y_player = e->y_player - e->cos_rad_alpha * e->speed;
-		}
-	}
+		ft_check_collision(e, e->alpha + 90, 15, keycode);
 	if (keycode == MLX_KEY_UP)
-	{
-		if (ft_check_collision(e, e->alpha, 15) == 1)
-		{
-			e->x_player = e->x_player + e->cos_rad_alpha * e->speed;
-			e->y_player = e->y_player - e->sin_rad_alpha * e->speed;
-		}
-	}
+		ft_check_collision(e, e->alpha, 15, keycode);
 	if (keycode == MLX_KEY_DOWN)
-	{
-		if (ft_check_collision(e, e->alpha - 180, 10) == 1)
-		{
-			e->x_player = e->x_player - e->cos_rad_alpha * e->speed;
-			e->y_player = e->y_player + e->sin_rad_alpha * e->speed;
-		}
-	}
+		ft_check_collision(e, e->alpha - 180, 10, keycode);
 	return (0);
 }
