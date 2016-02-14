@@ -6,7 +6,7 @@
 /*   By: cledant <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/12 14:42:46 by cledant           #+#    #+#             */
-/*   Updated: 2016/02/14 15:22:44 by cledant          ###   ########.fr       */
+/*   Updated: 2016/02/14 18:06:13 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ static void			ft_set_cpy_coord(int counter[2], int (*cpy_coord)[2][2][2],
 {
 	(*cpy_coord)[0][1][0] = (int)coord[0] % C_SIZE;
 	(*cpy_coord)[0][1][1] = (int)coord[1] % C_SIZE;
-	(*cpy_coord)[0][0][0] = counter[1]; 
+	(*cpy_coord)[0][0][0] = counter[1];
 	(*cpy_coord)[0][0][1] = limit[0][0] + counter[0];
 	(*cpy_coord)[1][1][0] = (int)coord[2] % C_SIZE;
 	(*cpy_coord)[1][1][1] = (int)coord[3] % C_SIZE;

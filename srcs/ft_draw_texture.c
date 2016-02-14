@@ -6,7 +6,7 @@
 /*   By: cledant <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/10 11:30:38 by cledant           #+#    #+#             */
-/*   Updated: 2016/02/14 13:13:38 by cledant          ###   ########.fr       */
+/*   Updated: 2016/02/14 18:03:45 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,6 @@ static void			ft_what_to_draw(t_mlx *e, int cpy_coord[2][2], int type)
 		ft_mlx_c_to_c_cpy_pixel(e->char_img, e->c5, cpy_coord, size);
 }
 
-
 void				ft_draw_texture(t_mlx *e, int counter[4], int limit[2],
 						double coord[2])
 {
@@ -46,7 +45,7 @@ void				ft_draw_texture(t_mlx *e, int counter[4], int limit[2],
 	int		cpy_coord[2][2];
 
 	i = 0;
-	cpy_coord[1][0]= (int)coord[1] % C_SIZE;
+	cpy_coord[1][0] = (int)coord[1] % C_SIZE;
 	while (i < (limit[1] - limit[0]))
 	{
 		if (counter[3] == 0)
@@ -54,7 +53,7 @@ void				ft_draw_texture(t_mlx *e, int counter[4], int limit[2],
 		else
 			cpy_coord[1][1] = (((i + counter[3] / 2) * C_SIZE)) /
 				(limit[1] - limit[0] + counter[3]);
-		cpy_coord[0][0] = counter[0]; 
+		cpy_coord[0][0] = counter[0];
 		cpy_coord[0][1] = limit[0] + i;
 		ft_what_to_draw(e, cpy_coord, counter[1]);
 		i++;

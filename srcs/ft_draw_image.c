@@ -6,7 +6,7 @@
 /*   By: cledant <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/03 09:56:45 by cledant           #+#    #+#             */
-/*   Updated: 2016/02/14 17:08:33 by cledant          ###   ########.fr       */
+/*   Updated: 2016/02/14 18:05:48 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ static void		ft_draw_1(t_mlx *e, int counter[4], size_t w_height,
 					double angle[8])
 {
 	int		limit[2][2];
-	
+
 	if (w_height < WIN_Y)
 	{
 		limit[0][0] = 0;
@@ -68,7 +68,7 @@ static void		ft_draw_2(t_mlx *e, int counter[4], size_t w_height,
 					double int_coord[2])
 {
 	int		limit[2][2];
-	
+
 	if (w_height < WIN_Y)
 	{
 		limit[1][0] = counter[2] - 2;
