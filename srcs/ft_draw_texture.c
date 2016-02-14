@@ -6,48 +6,57 @@
 /*   By: cledant <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/10 11:30:38 by cledant           #+#    #+#             */
-/*   Updated: 2016/02/13 15:05:23 by cledant          ###   ########.fr       */
+/*   Updated: 2016/02/14 13:13:38 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "wolf3d.h"
 
-void	ft_draw_texture(t_mlx *e, int disp_i_col, int begin, int end, int type,
-			double coord[2], int overflow)
+static void			ft_what_to_draw(t_mlx *e, int cpy_coord[2][2], int type)
+{
+	int		size[2];
+
+	size[0] = WIN_X;
+	size[1] = C_SIZE;
+	if (type == 1)
+		ft_mlx_c_to_c_cpy_pixel(e->char_img, e->redbrick, cpy_coord, size);
+	else if (type == 2)
+		ft_mlx_c_to_c_cpy_pixel(e->char_img, e->wood, cpy_coord, size);
+	else if (type == 3)
+		ft_mlx_c_to_c_cpy_pixel(e->char_img, e->brown20, cpy_coord, size);
+	else if (type == 4)
+		ft_mlx_c_to_c_cpy_pixel(e->char_img, e->cobblestone, cpy_coord, size);
+	else if (type == 5)
+		ft_mlx_c_to_c_cpy_pixel(e->char_img, e->c1, cpy_coord, size);
+	else if (type == 6)
+		ft_mlx_c_to_c_cpy_pixel(e->char_img, e->c2, cpy_coord, size);
+	else if (type == 7)
+		ft_mlx_c_to_c_cpy_pixel(e->char_img, e->c3, cpy_coord, size);
+	else if (type == 8)
+		ft_mlx_c_to_c_cpy_pixel(e->char_img, e->c4, cpy_coord, size);
+	else if (type == 9)
+		ft_mlx_c_to_c_cpy_pixel(e->char_img, e->c5, cpy_coord, size);
+}
+
+
+void				ft_draw_texture(t_mlx *e, int counter[4], int limit[2],
+						double coord[2])
 {
 	int		i;
-	int		tex_coord[2];
-	int		draw_coord[2];
+	int		cpy_coord[2][2];
 
 	i = 0;
-	tex_coord[0]= (int)coord[1] % C_SIZE;
-	while (i < (end - begin))
+	cpy_coord[1][0]= (int)coord[1] % C_SIZE;
+	while (i < (limit[1] - limit[0]))
 	{
-		if (overflow == 0)
-			tex_coord[1] = ((i * C_SIZE) / (end - begin));
+		if (counter[3] == 0)
+			cpy_coord[1][1] = ((i * C_SIZE) / (limit[1] - limit[0]));
 		else
-			tex_coord[1] = (((i + overflow / 2) * C_SIZE)) /
-				(end - begin + overflow);
-		draw_coord[0] = disp_i_col; 
-		draw_coord[1] = begin + i;
-		if (type == 1)
-			ft_mlx_c_to_c_cpy_pixel(e->char_img, e->redbrick, draw_coord, tex_coord,WIN_X, C_SIZE);
-		else if (type == 2)
-			ft_mlx_c_to_c_cpy_pixel(e->char_img, e->wood, draw_coord, tex_coord, WIN_X, C_SIZE);
-		else if (type == 3)
-			ft_mlx_c_to_c_cpy_pixel(e->char_img, e->brown20, draw_coord, tex_coord, WIN_X, C_SIZE);
-		else if (type == 4)
-			ft_mlx_c_to_c_cpy_pixel(e->char_img, e->cobblestone, draw_coord, tex_coord, WIN_X, C_SIZE);
-		else if (type == 5)
-			ft_mlx_c_to_c_cpy_pixel(e->char_img, e->c1, draw_coord, tex_coord, WIN_X, C_SIZE);
-		else if (type == 6)
-			ft_mlx_c_to_c_cpy_pixel(e->char_img, e->c2, draw_coord, tex_coord, WIN_X, C_SIZE);
-		else if (type == 7)
-			ft_mlx_c_to_c_cpy_pixel(e->char_img, e->c3, draw_coord, tex_coord, WIN_X, C_SIZE);
-		else if (type == 8)
-			ft_mlx_c_to_c_cpy_pixel(e->char_img, e->c4, draw_coord, tex_coord, WIN_X, C_SIZE);
-		else if (type == 9)
-			ft_mlx_c_to_c_cpy_pixel(e->char_img, e->c5, draw_coord, tex_coord, WIN_X, C_SIZE);
+			cpy_coord[1][1] = (((i + counter[3] / 2) * C_SIZE)) /
+				(limit[1] - limit[0] + counter[3]);
+		cpy_coord[0][0] = counter[0]; 
+		cpy_coord[0][1] = limit[0] + i;
+		ft_what_to_draw(e, cpy_coord, counter[1]);
 		i++;
 	}
 }

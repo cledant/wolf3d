@@ -6,7 +6,7 @@
 /*   By: cledant <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/02 11:35:05 by cledant           #+#    #+#             */
-/*   Updated: 2016/02/13 20:48:27 by cledant          ###   ########.fr       */
+/*   Updated: 2016/02/14 15:39:08 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,8 +92,7 @@ typedef struct	s_mlx
 }				t_mlx;
 
 void			ft_mlx_c_to_c_cpy_pixel(char *dest_i, char *src_i,
-					int d_coord[2], int s_coord[2], int d_sizeline,
-					int s_sizeline);
+					int coord[2][2], int sizeline[2]);
 int				expose_hook(t_mlx *e);
 int				key_hook(int keycode, t_mlx *e);
 int				mouse_motion(int x, int y, t_mlx *e);
@@ -115,12 +114,10 @@ int				ft_check_collision(t_mlx *e, double angle, size_t d_collision);
 int				ft_load_texture(t_mlx *e);
 void			ft_clear_texture(t_mlx *e);
 void			ft_clear_texture_2(t_mlx *e);
-void			ft_draw_texture(t_mlx *e, int disp_i_col, int begin, int end,
-					int type, double coord[2], int overflow);
-void			ft_draw_texture(t_mlx *e, int disp_i_col, int begin, int end,
-					int type, double coord[2], int overflow);
-void			ft_draw_ceiling_floor(t_mlx *e, int disp_i_col, int begin[2],
-					int end[2], double angle[8]);
+void			ft_draw_texture(t_mlx *e, int counter[4], int limit[2],
+					double coord[2]);
+void			ft_draw_ceiling_floor(t_mlx *e, int disp_i_col, int limit[2][2],
+					double angle[8]);
 void			ft_alloc_img_char(t_mlx *e);
 void			ft_alloc_img_char_2(t_mlx *e);
 void			ft_change_anim(t_mlx *e);

@@ -6,32 +6,32 @@
 /*   By: cledant <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/03 09:56:45 by cledant           #+#    #+#             */
-/*   Updated: 2016/02/13 20:36:20 by cledant          ###   ########.fr       */
+/*   Updated: 2016/02/14 15:06:51 by cledant          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "wolf3d.h"
 
+/*
+**	counter[4] = {i, wall_type, offset, overflow}
+*/
+
 void	ft_draw_image(t_mlx *e)
 {
-	int		i;
-	int		begin[2];
-	int		end[2];
+	int		counter[4];
+	int		limit[2][2];
 	size_t	w_height;
-	int		offset;
 	double	angle[8];
-	int 	wall_type;
 	double	int_coord[2];
-	int 	overflow;
 
-	wall_type = 0;
-	i = 0;
+	counter[0] = 0;
+	counter[1] = 0;
 	angle[0] = e->alpha + 30;
 	angle[1] = FOV / 2;
-	while (i < WIN_X)
+	while (counter[0] < WIN_X)
 	{
-		overflow = 0;
-		if (i != 0)
+		counter[3] = 0;
+		if (counter[0] != 0)
 		{
 			angle[0] -= e->inc_alpha;
 			angle[1] -= e->inc_alpha;
@@ -47,32 +47,32 @@ void	ft_draw_image(t_mlx *e)
 		angle[6] = tan(angle[2]);
 		angle[7] = cos(angle[3]);
 		w_height = C_SIZE * e->dist_to_proj_plane / ft_select_ray(e, angle,
-				&wall_type, &int_coord);
-		offset = (WIN_Y - w_height) / 2;
-		if (offset < 0)
-			offset = 0;
+				&(counter[1]), &int_coord);
+		counter[2] = (WIN_Y - w_height) / 2;
+		if (counter[2] < 0)
+			counter[2] = 0;
 		if (w_height > WIN_Y)
 		{
-			overflow = w_height - WIN_Y;
+			counter[3] = w_height - WIN_Y;
 			w_height = WIN_Y;
 		}
 		if (w_height < WIN_Y)
 		{
-			begin[0] = 0;
-			end[0] = (int)(offset);
-			begin[1] = (int)(offset + w_height - 1);
-			end[1] = WIN_Y - 1;
-			ft_draw_ceiling_floor(e, i, begin, end, angle);
-			begin[1] = (int)offset - 2;
-			end[1] = (int)(offset + w_height + 1);
-			ft_draw_texture(e, i, begin[1], end[1], wall_type, int_coord, overflow);
+			limit[0][0] = 0;
+			limit[0][1] = counter[2];
+			limit[1][0] = counter[2] + w_height - 1;
+			limit[1][1] = WIN_Y - 1;
+			ft_draw_ceiling_floor(e, counter[0], limit, angle);
+			limit[1][0] = counter[2] - 2;
+			limit[1][1] = counter[2] + w_height + 1;
+			ft_draw_texture(e, counter, limit[1], int_coord);
 		}
 		else
 		{
-			begin[1] = (int)offset;
-			end[1] = (int)(w_height);
-			ft_draw_texture(e, i, begin[1], end[1], wall_type, int_coord, overflow);
+			limit[1][0] = counter[2];
+			limit[1][1] = (int)(w_height);
+			ft_draw_texture(e, counter, limit[1], int_coord);
 		}
-		i++;
+		(counter[0])++;
 	}
 }
