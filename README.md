@@ -1,5 +1,7 @@
 # Wolf3D
 
+![screenshot](/screenshot/wolf3d.png?raw=true)
+
 Raycasting engine using 42 graphic api minilibx.
 
 ## Compiling
